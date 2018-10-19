@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = ActiveAdminChat::VERSION
   s.authors     = ["Santiago Bartesaghi"]
   s.email       = ["santiago.bartesaghi@rootstrap.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of ActiveAdminChat."
-  s.description = "TODO: Description of ActiveAdminChat."
+  s.homepage    = "https://github.com/rootstrap/active_admin_chat"
+  s.summary     = "ActiveAdmin chat plugin"
+  s.description = s.summary
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
