@@ -9,10 +9,14 @@ Metrics/AbcSize:
   # The ABC size is a calculated magnitude, so this number can be an Integer or
   # a Float.
   Max: 15
+  Exclude:
+    - lib/generators/active_admin_chat/install/install_generator.rb
 
 Metrics/BlockLength:
   CountComments: false  # count full line comments?
   Max: 25
+  Exclude:
+    - spec/generators/install_generator_spec.rb
 
 Metrics/BlockNesting:
   Max: 4
@@ -60,3 +64,7 @@ Style/ModuleFunction:
 Style/MixinUsage:
   Exclude:
     - spec/dummy/bin/*
+
+Style/GuardClause:
+  Exclude:
+    - lib/generators/active_admin_chat/install/install_generator.rb
