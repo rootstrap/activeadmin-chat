@@ -27,7 +27,7 @@ Metrics/BlockLength:
   Exclude:
     - spec/generators/install_generator_spec.rb
     - lib/active_admin_chat/active_admin/application.rb
-  ExcludedMethods: ['describe', 'context']
+  ExcludedMethods: ['describe', 'context', 'feature', 'scenario']
 
 Metrics/BlockNesting:
   Max: 4
@@ -60,6 +60,7 @@ Metrics/LineLength:
     - https
   Exclude:
     - spec/dummy/**/*
+    - spec/channels/chat_channel_spec.rb
 
 Metrics/ParameterLists:
   Max: 5
