@@ -64,7 +64,7 @@
     background-color: $active-admin-chat__lighter-grey;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: calc(100% - 61px);
     overflow: auto;
     padding: 0 15px;
   }
@@ -100,6 +100,21 @@
       display: block;
       font-size: 8px;
       margin-top: 3px;
+    }
+  }
+
+  .active-admin-chat__send-message-container {
+    background-color: $active-admin-chat__lighter-grey;
+    height: 61px;
+
+    input {
+      border: 0;
+      border-radius: 25px;
+      display: none;
+      margin: 10px 30px;
+      outline: none;
+      padding: 15px;
+      width: calc(100% - 90px);
     }
   }
 }

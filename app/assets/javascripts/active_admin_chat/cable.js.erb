@@ -1,0 +1,4 @@
+(function() {
+  this.ActiveAdminChat || (this.ActiveAdminChat = {});
+  ActiveAdminChat.cable = ActionCable.createConsumer(<% ENV['CABLE_URL'] %>);
+}).call(this);

@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'activeadmin', '~> 1.3.1'
   s.add_dependency 'rails', '~> 5.2.1'
 
+  s.add_development_dependency 'action-cable-testing'
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'factory_bot_rails'
@@ -28,4 +29,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop', '~> 0.59.2'
   s.add_development_dependency 'selenium-webdriver'
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'timecop'
 end

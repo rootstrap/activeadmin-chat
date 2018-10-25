@@ -6,6 +6,7 @@ require File.expand_path('dummy/config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'action_cable/testing/rspec'
 
 # Setup ActiveAdmin
 ActiveAdmin.application.load_paths = [File.expand_path('dummy/app/admin', __dir__)]
