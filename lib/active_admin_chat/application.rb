@@ -17,12 +17,8 @@ module ActiveAdminChat
     end
 
     %i[conversation message admin_user user].each do |attribute|
-      define_method :"#{attribute}_relation_name" do |namespace = false|
-        model_name = public_send("#{attribute}_model_name")
-
-        model_name = model_name.split('/').last unless namespace
-
-        model_name
+      define_method :"#{attribute}_relation_name" do
+        public_send("#{attribute}_model_name").split('/').last
       end
     end
   end

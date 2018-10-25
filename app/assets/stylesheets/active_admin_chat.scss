@@ -1,0 +1,47 @@
+@import "colors";
+
+.active-admin-chat__chat {
+   height: calc(100vh - 270px);
+
+  .active-admin-chat__title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 12px 8px 12px;
+    margin: 0;
+    background-color: $active-admin-chat__lighter-grey;
+    background-image: linear-gradient(180deg, $active-admin-chat__lighter-grey, $active-admin-chat__light-grey);
+    text-shadow: $active-admin-chat__white 0 1px 0;
+    border: solid 1px $active-admin-chat__grey;
+    border-color: $active-admin-chat__light-grey $active-admin-chat__light-grey $active-admin-chat__grey $active-admin-chat__light-grey;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px $active-admin-chat__white inset;
+  }
+
+  .active-admin-chat__conversations-list-container {
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+  }
+
+  .active-admin-chat__conversations-list {
+    padding: 0;
+    margin: 0;
+    height: calc(100% - 34px);
+    overflow-y: auto;
+  }
+
+  .active-admin-chat__conversation {
+    list-style: none;
+    vertical-align: top;
+    padding: 10px 12px 8px 12px;
+    border-bottom: 1px solid $active-admin-chat__lighter-grey;
+    cursor: pointer;
+
+    &:nth-child(even) {
+      background-color: $active-admin-chat__lightest-grey;
+    }
+
+    &:hover {
+      background-color: $active-admin-chat__lighter-grey;
+    }
+  }
+}
