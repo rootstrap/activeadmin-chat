@@ -31,7 +31,6 @@ describe ChatHelper, type: :helper do
     let!(:conversation2) { create(:conversation, person: person2) }
 
     it "returns 'selected' if both conversations are the same one" do
-
       expect(helper.selected_class(conversation1, conversation1)).to eq('selected')
     end
 
