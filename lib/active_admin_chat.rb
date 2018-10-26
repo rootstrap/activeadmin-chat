@@ -23,6 +23,8 @@ module ActiveAdminChat
   delegate :message_relation_name, to: :application
   delegate :admin_user_relation_name, to: :application
   delegate :user_relation_name, to: :application
+  delegate :page_name, to: :application
+  delegate :namespace, to: :application
 end
 
 ::ActiveAdmin.send :include, ActiveAdminChat::ActiveAdmin
