@@ -3,10 +3,18 @@
     <h3 class='active-admin-chat__title'><%= ActiveAdminChat.conversation_relation_name.pluralize.capitalize %></h3>
     <ul class='active-admin-chat__conversations-list'>
       <% conversations.each do |conversation| %>
-        <li class='active-admin-chat__conversation' id='conversation-<%= conversation.id %>'>
+        <li class='active-admin-chat__conversation-item' id='conversation-<%= conversation.id %>'>
           <%= conversation.public_send(:"#{ActiveAdminChat.user_relation_name}").email %>
         </li>
       <% end %>
     </ul>
   </div>
+  <div class='active-admin-chat__conversation-history-container'>
+    <div class='active-admin-chat__conversation-history'></div>
+  </div>
 </div>
+
+<script>
+  window.ActiveAdminChat = window.ActiveAdminChat || {};
+  window.ActiveAdminChat.conversationEndpoint = '<%= "/#{ActiveAdminChat.namespace}/#{ActiveAdminChat.page_name}/" %>';
+</script>
