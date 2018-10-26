@@ -6,7 +6,7 @@ module ActiveAdminChat
           # add chat defaults here
 
           # customize default chat
-          instance_eval &block
+          instance_eval(&block)
         end
       end
     end

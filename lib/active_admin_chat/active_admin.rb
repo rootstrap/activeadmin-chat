@@ -1,6 +1,6 @@
 module ActiveAdminChat
   module ActiveAdmin
-    def self.included base
+    def self.included(base)
       base.extend ClassMethods
     end
 
