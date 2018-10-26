@@ -46,7 +46,7 @@ feature 'Visit the chat page', js: true do
       find('#send-message').native.send_keys(:return)
 
       expect(page).to have_content('A new message')
-      expect(page).to have_content(Time.current.strftime("%M - %m/%d/%Y"))
+      expect(page).to have_content(Time.current.strftime('%M - %m/%d/%Y'))
 
       visit admin_chat_path
 
@@ -73,7 +73,7 @@ feature 'Visit the chat page', js: true do
       find('#send-message').native.send_keys(:return)
 
       expect(page).to have_content('A new message')
-      expect(page).to have_content(Time.current.strftime("%M - %m/%d/%Y"))
+      expect(page).to have_content(Time.current.strftime('%M - %m/%d/%Y'))
 
       visit admin_chat_path
 

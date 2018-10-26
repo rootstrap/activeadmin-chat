@@ -3,6 +3,7 @@ require 'active_admin_chat/engine'
 require 'active_admin_chat/active_admin'
 require 'active_admin_chat/active_admin/application'
 require 'active_admin_chat/application'
+require 'active_admin_chat/active_admin/index_table_for'
 
 module ActiveAdminChat
   extend self
@@ -25,7 +26,9 @@ module ActiveAdminChat
   delegate :user_relation_name, to: :application
   delegate :page_name, to: :application
   delegate :namespace, to: :application
+  delegate :user_model_name, to: :application
 end
 
 ::ActiveAdmin.send :include, ActiveAdminChat::ActiveAdmin
 ::ActiveAdmin::Application.send :include, ActiveAdminChat::ActiveAdmin::Application
+::ActiveAdmin::Views::IndexAsTable::IndexTableFor.send :prepend, ActiveAdminChat::ActiveAdmin::Views::IndexAsTable::IndexTableFor

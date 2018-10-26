@@ -112,7 +112,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  config.root_to = 'chat#index'
+  config.root_to = 'api_people#index'
 
   # == Admin Comments
   #

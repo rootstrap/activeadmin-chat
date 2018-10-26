@@ -32,6 +32,20 @@ module ActiveAdminChat
               active_conversation.public_send(ActiveAdminChat.message_relation_name.pluralize)
                                  .includes(:sender).order(created_at: :asc)
             end
+
+            def create
+              conversation = ActiveAdminChat.conversation_klass
+                                            .find_or_create_by!(
+                                              "#{user_relation_name_id}": params[:"#{user_relation_name_id}"]
+                                            )
+              redirect_to action: 'show', id: conversation
+            end
+
+            private
+
+            def user_relation_name_id
+              "#{ActiveAdminChat.user_relation_name}_id"
+            end
           end
 
           # customize default chat
