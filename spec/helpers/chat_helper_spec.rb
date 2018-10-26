@@ -1,0 +1,25 @@
+require 'rails_helper'
+require 'factories/admin_user'
+require 'factories/conversation'
+require 'factories/person'
+require 'factories/text'
+
+describe ChatHelper, type: :helper do
+  describe '#admin_class' do
+    let!(:admin_user) { create(:admin_user) }
+    let!(:person) { create(:person) }
+    let!(:conversation) { create(:conversation, person: person) }
+
+    it "returns 'admin' if message sender is an admin" do
+      text = create(:text, sender: admin_user, conversation: conversation)
+
+      expect(helper.admin_class(text)).to eq('admin')
+    end
+
+    it "returns nil if message sender is not an admin" do
+      text = create(:text, sender: person, conversation: conversation)
+
+      expect(helper.admin_class(text)).to eq(nil)
+    end
+  end
+end
