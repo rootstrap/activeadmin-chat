@@ -1,0 +1,2 @@
+class AdminUser < ApplicationRecord
+end
