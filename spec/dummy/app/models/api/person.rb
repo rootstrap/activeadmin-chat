@@ -1,2 +1,4 @@
-class Api::Person < ApplicationRecord
+module Api
+  class Person < ApplicationRecord
+  end
 end
