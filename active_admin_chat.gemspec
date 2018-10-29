@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'activeadmin', '~> 1.3.1'
   s.add_dependency 'rails', '~> 5.2.1'
 
+  s.add_development_dependency 'byebug'
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'factory_bot_rails'
   s.add_development_dependency 'generator_spec'
