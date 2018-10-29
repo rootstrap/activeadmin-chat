@@ -14,6 +14,15 @@ module ActiveAdminChat
   def setup
     yield(application)
   end
+
+  delegate :conversation_klass, to: :application
+  delegate :message_klass, to: :application
+  delegate :admin_user_klass, to: :application
+  delegate :user_klass, to: :application
+  delegate :conversation_relation_name, to: :application
+  delegate :message_relation_name, to: :application
+  delegate :admin_user_relation_name, to: :application
+  delegate :user_relation_name, to: :application
 end
 
 ::ActiveAdmin.send :include, ActiveAdminChat::ActiveAdmin
