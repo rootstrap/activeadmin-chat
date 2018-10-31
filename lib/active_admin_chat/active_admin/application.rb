@@ -22,6 +22,7 @@ module ActiveAdminChat
                                         )
                                         .includes(:sender)
                                         .order(created_at: :desc)
+                                        .page(params[:page])
 
               render json: ActiveAdminChat::MessagePresenter.all(messages)
             end
