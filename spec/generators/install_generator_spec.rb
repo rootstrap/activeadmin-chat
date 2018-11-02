@@ -26,7 +26,7 @@ describe ActiveAdminChat::Generators::InstallGenerator, type: :generator do
           file 'chat.rb' do
             contains 'class Chat < ApplicationRecord'
             contains "belongs_to :user, class_name: 'Api::User'"
-            contains 'has_many :messages'
+            contains 'has_many :messages, dependent: :destroy'
           end
           file 'message.rb' do
             contains 'class Message < ApplicationRecord'
