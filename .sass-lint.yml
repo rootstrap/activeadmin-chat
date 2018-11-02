@@ -1,0 +1,7 @@
+rules:
+  no-color-literals:
+    - 1
+    - allow-rgba: 1
+
+  class-name-format: 0
+  variable-name-format: 0
