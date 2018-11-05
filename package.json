@@ -1,0 +1,7 @@
+{
+  "name": "active_admin_chat",
+  "version": "1.0.0",
+  "devDependencies": {
+    "sass-lint": "^1.12.1"
+  }
+}

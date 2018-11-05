@@ -92,10 +92,12 @@ module ActiveAdminChat
       end
 
       def add_has_many(model_name)
+        relation_name = model_name.split('/').last.pluralize
+
         if model_name.include?('/')
-          "has_many :#{model_name.split('/').last.pluralize}, class_name: #{model_name.classify}"
+          "has_many :#{relation_name}, class_name: #{model_name.classify}, dependent: :destroy"
         else
-          "has_many :#{model_name.pluralize}"
+          "has_many :#{relation_name}, dependent: :destroy"
         end
       end
 

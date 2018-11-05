@@ -9,5 +9,17 @@ module ActiveAdminChat
       @admin_user_model_name = 'admin_user'
       @user_model_name = 'user'
     end
+
+    %i[conversation message admin_user user].each do |attribute|
+      define_method :"#{attribute}_klass" do
+        public_send("#{attribute}_model_name").pluralize.classify.constantize
+      end
+    end
+
+    %i[conversation message admin_user user].each do |attribute|
+      define_method :"#{attribute}_relation_name" do
+        public_send("#{attribute}_model_name").split('/').last
+      end
+    end
   end
 end

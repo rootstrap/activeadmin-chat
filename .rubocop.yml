@@ -1,3 +1,7 @@
+AllCops:
+  Exclude:
+    - spec/dummy/db/schema.rb
+
 Documentation:
   Enabled: false
 
@@ -17,6 +21,7 @@ Metrics/BlockLength:
   Max: 25
   Exclude:
     - spec/generators/install_generator_spec.rb
+  ExcludedMethods: ['describe', 'context']
 
 Metrics/BlockNesting:
   Max: 4
