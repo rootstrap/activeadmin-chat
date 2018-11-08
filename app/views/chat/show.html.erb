@@ -1,12 +1,16 @@
 <div class='active-admin-chat__chat'>
-  <%= render partial: 'chat/list', locals: { conversations: conversations } %>
+  <%= render partial: 'chat/list' %>
 
   <div class='active-admin-chat__conversation-history-container'>
     <div class='active-admin-chat__conversation-history'>
-      <% messages&.each do |message| %>
-        <div id='message-<%= message.id %>' class='active-admin-chat__message-container <%= admin_class(message) %>'>
-          <p><%= message.content %><span class='active-admin-chat__time'></span></p>
-        </div>
+      <% if active_conversation && messages.empty? %>
+          <div class='active-admin-chat__conversation-history no-messages'>No messages</div>
+      <% else %>
+        <% messages.each do |message| %>
+          <div id='message-<%= message.id %>' class='active-admin-chat__message-container <%= admin_class(message) %>'>
+            <p><%= message.content %></p>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

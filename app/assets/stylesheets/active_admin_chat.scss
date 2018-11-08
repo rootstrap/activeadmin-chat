@@ -27,11 +27,11 @@
     margin: 0;
     overflow-y: auto;
     padding: 0;
-  }
 
-  .active-admin-chat__conversation-item-link {
-    color: inherit;
-    text-decoration: inherit;
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
   }
 
   .active-admin-chat__conversation-item {
@@ -72,6 +72,12 @@
     height: 100%;
     overflow: auto;
     padding: 0 15px;
+
+    &.no-messages {
+      font-size: 24px;
+      margin: auto;
+      padding: 50px;
+    }
   }
 
   .active-admin-chat__message-container {
@@ -86,10 +92,6 @@
         background-color: $active-admin-chat__green;
         border-radius: 10px 10px 0;
       }
-
-      .active-admin-chat__time {
-        text-align: right;
-      }
     }
 
     p {
@@ -99,12 +101,6 @@
       max-width: 70%;
       padding: 10px;
       word-break: break-word;
-    }
-
-    .active-admin-chat__time {
-      display: block;
-      font-size: 8px;
-      margin-top: 3px;
     }
   }
 }
