@@ -61,8 +61,10 @@ describe ActiveAdminChat::Generators::InstallGenerator, type: :generator do
             contains 'string :content'
             contains 'references :sender, polymorphic: true'
             contains 'integer :chat_id'
-            contains 'timestamps'
+            contains 'datetime :created_at'
+            contains 'datetime :updated_at'
             contains 'add_index :messages, :chat_id'
+            contains 'add_index :messages, :created_at'
           end
         end
       end

@@ -36,8 +36,10 @@ module ActiveAdminChat
                                      'content:string',
                                      'sender:references{polymorphic}',
                                      "#{@conversation_model_name.split('/').last}_id:integer:index",
+                                     'created_at:datetime:index',
+                                     'updated_at:datetime',
                                      '--migration',
-                                     '--timestamps'
+                                     '--no-timestamps'
                                    ])
         end
       end

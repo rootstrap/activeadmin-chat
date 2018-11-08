@@ -3,7 +3,7 @@ require 'factories/conversation'
 require 'factories/person'
 require 'factories/text'
 
-feature 'Visit the chat page', js: true do
+feature 'Visit the chat page' do
   scenario 'has the customized content' do
     person1 = build(:person)
     person2 = build(:person)
@@ -18,13 +18,13 @@ feature 'Visit the chat page', js: true do
     expect(page).to have_content(person1.email)
     expect(page).to have_content(person2.email)
 
-    find('.active-admin-chat__conversation-item', text: person1.email).click
+    click_on person1.email
 
     expect(page).to have_content('Person 1 chat content')
     expect(page).not_to have_content('Person 2 first chat content')
     expect(page).not_to have_content('Person 2 second chat content')
 
-    find('.active-admin-chat__conversation-item', text: person2.email).click
+    click_on person2.email
 
     expect(page).not_to have_content('Person 1 chat content')
     expect(page).to have_content('Person 2 first chat content')
