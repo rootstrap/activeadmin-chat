@@ -43,12 +43,14 @@ describe ChatChannel, type: :channel do
       end
 
       it 'broadcasts a message' do
-        subscribe(conversation_id: conversation.id)
-        expect { perform :speak, message: 'A new message' }.to(
-          have_broadcasted_to(conversation).from_channel(ChatChannel).with(
-            "<div id=\"message-1\" class=\"active-admin-chat__message-container admin\">\n  <p>A new message</p>\n</div>\n"
+        Timecop.freeze(Time.current) do
+          subscribe(conversation_id: conversation.id)
+          expect { perform :speak, message: 'A new message' }.to(
+            have_broadcasted_to(conversation).from_channel(ChatChannel).with(
+              "<div id=\"message-1\" time=\"#{Time.current.iso8601}\" class=\"active-admin-chat__message-container admin\">\n  <div>\n    <p>A new message</p>\n  </div>\n</div>\n"
+            )
           )
-        )
+        end
       end
 
       it 'stores the message in the database' do
@@ -102,13 +104,15 @@ describe ChatChannel, type: :channel do
       end
 
       it 'broadcasts a message' do
-        subscribe
+        Timecop.freeze(Time.current) do
+          subscribe
 
-        expect { perform :speak, message: 'A new message' }.to(
-          have_broadcasted_to(conversation).from_channel(ChatChannel).with(
-            "<div id=\"message-1\" class=\"active-admin-chat__message-container \">\n  <p>A new message</p>\n</div>\n"
+          expect { perform :speak, message: 'A new message' }.to(
+            have_broadcasted_to(conversation).from_channel(ChatChannel).with(
+              "<div id=\"message-1\" time=\"#{Time.current.iso8601}\" class=\"active-admin-chat__message-container \">\n  <div>\n    <p>A new message</p>\n  </div>\n</div>\n"
+            )
           )
-        )
+        end
       end
 
       it 'stores the message in the database' do

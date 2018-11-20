@@ -88,19 +88,29 @@
     &.admin {
       text-align: right;
 
-      p {
+      div {
         background-color: $active-admin-chat__green;
         border-radius: 10px 10px 0;
       }
     }
 
-    p {
+    div {
       background-color: $active-admin-chat__white;
       border-radius: 10px 10px 10px 0;
       display: inline-block;
       max-width: 70%;
-      padding: 10px;
+      margin: 3px;
+      padding: 5px;
       word-break: break-word;
+
+      p {
+        font-size: 12px;
+        margin: 0 0 0 2px;
+      }
+
+      span{
+        font-size: 10px;
+      }
     }
   }
 
