@@ -55,7 +55,7 @@ describe ChatChannel, type: :channel do
         subscribe(conversation_id: conversation.id)
 
         expect { perform :speak, message: 'A new message' }.to change {
-          Text.count
+          conversation.texts.count
         }.by(1)
       end
     end
@@ -115,7 +115,7 @@ describe ChatChannel, type: :channel do
         subscribe
 
         expect { perform :speak, message: 'A new message' }.to change {
-          Text.count
+          conversation.texts.count
         }.by(1)
       end
     end
