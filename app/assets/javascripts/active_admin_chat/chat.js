@@ -1,12 +1,21 @@
 $(function() {
   _scrollConversationToBottom();
   _subscribeChannel();
+  _reframeTime();
 
   $('#send-message').on('keypress', function(event) {
     if (event.which === 13) {
       _sendMessage.call(this, event);
     }
   });
+
+  function _reframeTime(){
+    $('.active-admin-chat__message-container').each(function(index, object){
+      var date = new Date($(object).attr('time'));
+      var realTime = customDate(date);
+      $(object).children().append(`<span>${realTime}</span>`);
+    })
+  }
 
   function _scrollConversationToBottom() {
     var height = $('.active-admin-chat__conversation-history').get(0).scrollHeight;
@@ -15,7 +24,10 @@ $(function() {
 
   function _insertMessage(message) {
     $('.active-admin-chat__conversation-history.no-messages').remove();
-    $('.active-admin-chat__conversation-history').prepend(message);
+    var realTime = customDate(new Date());
+    var message2 = $(message).clone();
+    message2.children().append(`<span>${realTime}</span>`);
+    $('.active-admin-chat__conversation-history').append(message2);
   };
 
   function _sendMessage(event) {
@@ -43,5 +55,10 @@ $(function() {
       },
     });
   };
+  function customDate(date){
+    var reg = /(.+), (\d{2}):(\d{2}):(\d{2})/;
+    var matches = date.toLocaleString('en-US', { hour12: false }).match(reg);
+    return `${matches[2]}:${matches[3]} - ${matches[1]}`;
+  }
 });
 
