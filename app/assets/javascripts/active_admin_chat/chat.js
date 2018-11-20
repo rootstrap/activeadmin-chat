@@ -15,7 +15,6 @@ $(function() {
 
   function _insertMessage(message) {
     $('.active-admin-chat__conversation-history.no-messages').remove();
-
     $('.active-admin-chat__conversation-history').prepend(message);
   };
 
@@ -23,7 +22,7 @@ $(function() {
     var inputValue = $(this).val();
     if (inputValue) {
       ActiveAdminChat.conversation.sendMessage(inputValue);
-      $(".active-admin-chat__conversation-history").animate({ scrollTop: $(".active-admin-chat__conversation-history").get(0).scrollHeight });
+      $('.active-admin-chat__conversation-history').animate({ scrollTop: $('.active-admin-chat__conversation-history').get(0).scrollHeight });
       $(this).val('');
     }
   };

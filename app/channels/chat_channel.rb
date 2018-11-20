@@ -13,7 +13,7 @@ class ChatChannel < ApplicationCable::Channel
       content: data['message']
     )
 
-    ChatChannel.broadcast_to(conversation, html(message))
+    ChatChannel.broadcast_to(conversation, render_message_partial(message))
   end
 
   private
@@ -29,7 +29,7 @@ class ChatChannel < ApplicationCable::Channel
                       end
   end
 
-  def html(message)
+  def render_message_partial(message)
     ApplicationController.render(
       partial: 'messages/message',
       locals: { message: message }
