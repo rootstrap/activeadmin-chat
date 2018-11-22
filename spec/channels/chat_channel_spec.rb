@@ -47,7 +47,7 @@ describe ChatChannel, type: :channel do
           subscribe(conversation_id: conversation.id)
           expect { perform :speak, message: 'A new message' }.to(
             have_broadcasted_to(conversation).from_channel(ChatChannel).with(
-              "<div id=\"message-1\" time=\"#{Time.current.iso8601}\" class=\"active-admin-chat__message-container admin\">\n  <div>\n    <p>A new message</p>\n  </div>\n</div>\n"
+              "<div id=\"message-1\" data-time=\"#{Time.current.iso8601}\" class=\"active-admin-chat__message-container admin\">\n  <div>\n    <p>A new message</p>\n  </div>\n</div>\n"
             )
           )
         end
@@ -109,7 +109,7 @@ describe ChatChannel, type: :channel do
 
           expect { perform :speak, message: 'A new message' }.to(
             have_broadcasted_to(conversation).from_channel(ChatChannel).with(
-              "<div id=\"message-1\" time=\"#{Time.current.iso8601}\" class=\"active-admin-chat__message-container \">\n  <div>\n    <p>A new message</p>\n  </div>\n</div>\n"
+              "<div id=\"message-1\" data-time=\"#{Time.current.iso8601}\" class=\"active-admin-chat__message-container \">\n  <div>\n    <p>A new message</p>\n  </div>\n</div>\n"
             )
           )
         end

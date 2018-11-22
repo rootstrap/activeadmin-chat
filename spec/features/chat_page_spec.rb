@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'timecop'
 require 'factories/admin_user'
 require 'factories/conversation'
 require 'factories/person'
@@ -34,48 +35,54 @@ feature 'Visit the chat page', js: true do
   end
 
   scenario 'sends a message' do
-    visit admin_chat_path
+    Timecop.freeze(Time.current) do
+      visit admin_chat_path
 
-    find('.active-admin-chat__conversation-item', text: person1.email).click
+      find('.active-admin-chat__conversation-item', text: person1.email).click
 
-    expect(page).not_to have_content('A new message')
+      expect(page).not_to have_content('A new message')
 
-    fill_in 'send-message', with: 'A new message'
-    find('#send-message').native.send_keys(:return)
+      fill_in 'send-message', with: 'A new message'
+      find('#send-message').native.send_keys(:return)
 
-    expect(page).to have_content('A new message')
+      expect(page).to have_content('A new message')
+      expect(page).to have_content(Time.current.strftime("%M - %m/%d/%Y"))
 
-    visit admin_chat_path
+      visit admin_chat_path
 
-    expect(page).not_to have_content('A new message')
+      expect(page).not_to have_content('A new message')
 
-    find('.active-admin-chat__conversation-item', text: person1.email).click
+      find('.active-admin-chat__conversation-item', text: person1.email).click
 
-    expect(page).to have_content('A new message')
-    expect(page).not_to have_content('No messages')
+      expect(page).to have_content('A new message')
+      expect(page).not_to have_content('No messages')
+    end
   end
 
   scenario "sends a message and 'No messages' disappear" do
-    visit admin_chat_path
+    Timecop.freeze(Time.current) do
+      visit admin_chat_path
 
-    find('.active-admin-chat__conversation-item', text: person3.email).click
+      find('.active-admin-chat__conversation-item', text: person3.email).click
 
-    expect(page).to have_content('No messages')
+      expect(page).to have_content('No messages')
 
-    expect(page).not_to have_content('A new message')
+      expect(page).not_to have_content('A new message')
 
-    fill_in 'send-message', with: 'A new message'
-    find('#send-message').native.send_keys(:return)
+      fill_in 'send-message', with: 'A new message'
+      find('#send-message').native.send_keys(:return)
 
-    expect(page).to have_content('A new message')
+      expect(page).to have_content('A new message')
+      expect(page).to have_content(Time.current.strftime("%M - %m/%d/%Y"))
 
-    visit admin_chat_path
+      visit admin_chat_path
 
-    expect(page).not_to have_content('A new message')
+      expect(page).not_to have_content('A new message')
 
-    find('.active-admin-chat__conversation-item', text: person3.email).click
+      find('.active-admin-chat__conversation-item', text: person3.email).click
 
-    expect(page).to have_content('A new message')
-    expect(page).not_to have_content('No messages')
+      expect(page).to have_content('A new message')
+      expect(page).not_to have_content('No messages')
+    end
   end
 end

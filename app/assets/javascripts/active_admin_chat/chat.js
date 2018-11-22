@@ -1,7 +1,7 @@
 $(function() {
+  _reframeTime();
   _scrollConversationToBottom();
   _subscribeChannel();
-  _reframeTime();
 
   $('#send-message').on('keypress', function(event) {
     if (event.which === 13) {
@@ -9,10 +9,10 @@ $(function() {
     }
   });
 
-  function _reframeTime(){
-    $('.active-admin-chat__message-container').each(function(index, object){
-      var date = new Date($(object).attr('time'));
-      var realTime = customDate(date);
+  function _reframeTime() {
+    $('.active-admin-chat__message-container').each(function(index, object) {
+      var date = new Date($(object).attr('data-time'));
+      var realTime = formatDate(date);
       $(object).children().append(`<span>${realTime}</span>`);
     })
   }
@@ -24,7 +24,7 @@ $(function() {
 
   function _insertMessage(message) {
     $('.active-admin-chat__conversation-history.no-messages').remove();
-    var realTime = customDate(new Date());
+    var realTime = formatDate(new Date());
     var message2 = $(message).clone();
     message2.children().append(`<span>${realTime}</span>`);
     $('.active-admin-chat__conversation-history').append(message2);
@@ -55,10 +55,10 @@ $(function() {
       },
     });
   };
-  function customDate(date){
+  function formatDate(date){
     var reg = /(.+), (\d{2}):(\d{2}):(\d{2})/;
     var matches = date.toLocaleString('en-US', { hour12: false }).match(reg);
-    return `${matches[2]}:${matches[3]} - ${matches[1]}`;
+    return matches[2] + ':' + matches[3] + ' - ' + matches[1];
   }
 });
 
