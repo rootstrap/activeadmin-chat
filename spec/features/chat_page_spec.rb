@@ -86,3 +86,51 @@ feature 'Visit the chat page', js: true do
     end
   end
 end
+
+feature 'Visit the chat page and use the pagination', js: true do
+  given!(:admin) { create(:admin_user) }
+  given(:person1) { create(:person) }
+  given(:texts1) do
+    build_list(:text, 5, content: 'Person 1 oldest chat messages', sender: person1,
+                         created_at: (Time.current - 10.minutes))
+  end
+  given(:texts2) do
+    build_list(:text, 25, content: 'Person 1 older chat messages', sender: person1,
+                          created_at: Time.current - 5.minutes)
+  end
+  given(:texts3) do
+    build_list(:text, 25, content: 'Person 1 newest chat messages', sender: person1,
+                          created_at: Time.current)
+  end
+  given!(:conversation1) { create(:conversation, person: person1, texts: texts1 + texts2 + texts3) }
+
+  scenario 'see the chat history' do
+    visit admin_chat_path
+
+    expect(conversation1.texts.count).to eq(55)
+    expect(page).to have_content(person1.email)
+
+    find('.active-admin-chat__conversation-item', text: person1.email).click
+
+    expect(page).to have_selector('.active-admin-chat__message-container', count: 25)
+    expect(page).to have_content('Person 1 newest chat messages')
+    expect(page).not_to have_content('Person 1 older chat messages')
+    expect(page).not_to have_content('Person 1 oldest chat messages')
+
+    within '.active-admin-chat__conversation-history' do
+      top_message = page.find('.active-admin-chat__message-container', match: :first)
+      page.execute_script 'arguments[0].scrollIntoView(true)', top_message
+    end
+
+    expect(page).to have_selector('.active-admin-chat__message-container', count: 50)
+    expect(page).to have_content('Person 1 older chat messages')
+
+    within '.active-admin-chat__conversation-history' do
+      top_message = page.find('.active-admin-chat__message-container', match: :first)
+      page.execute_script 'arguments[0].scrollIntoView(true)', top_message
+    end
+
+    expect(page).to have_selector('.active-admin-chat__message-container', count: 55, wait: 3)
+    expect(page).to have_content('Person 1 oldest chat messages')
+  end
+end

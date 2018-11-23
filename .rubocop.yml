@@ -20,6 +20,7 @@ Metrics/AbcSize:
   Exclude:
     - lib/generators/active_admin_chat/install/install_generator.rb
     - lib/active_admin_chat/active_admin/application.rb
+    - app/channels/chat_channel.rb
 
 Metrics/BlockLength:
   CountComments: false  # count full line comments?

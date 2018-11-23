@@ -27,6 +27,7 @@ module ActiveAdminChat
   delegate :page_name, to: :application
   delegate :namespace, to: :application
   delegate :user_model_name, to: :application
+  delegate :messages_per_page, to: :application
 end
 
 ::ActiveAdmin.send :include, ActiveAdminChat::ActiveAdmin
