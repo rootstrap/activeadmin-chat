@@ -13,7 +13,7 @@ $(function() {
     $('.active-admin-chat__message-container').each(function(index, object) {
       var date = new Date($(object).attr('data-time'));
       var realTime = formatDate(date);
-      $(object).children().append(`<span>${realTime}</span>`);
+      $(object).children().append('<span>'+ realTime + '</span>');
     })
   }
 
@@ -26,7 +26,7 @@ $(function() {
     $('.active-admin-chat__conversation-history.no-messages').remove();
     var realTime = formatDate(new Date());
     var message2 = $(message).clone();
-    message2.children().append(`<span>${realTime}</span>`);
+    message2.children().append('<span>'+ realTime + '</span>');
     $('.active-admin-chat__conversation-history').append(message2);
   };
 
