@@ -16,3 +16,8 @@
     </div>
   </div>
 </div>
+
+<script>
+  window.ActiveAdminChat = window.ActiveAdminChat || {};
+  window.ActiveAdminChat.conversationEndpoint = '<%= "/#{ActiveAdminChat.namespace}/#{ActiveAdminChat.page_name}/" %>';
+</script>

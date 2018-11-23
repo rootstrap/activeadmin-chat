@@ -14,7 +14,12 @@ module ActiveAdminChat
             helper_method :messages, :active_conversation, :conversations
 
             def show
-              render 'chat/show'
+              respond_to do |format|
+                format.html { render 'chat/show' }
+                format.json do
+                  render json: messages.map { |message| render_message_partial(message) }
+                end
+              end
             end
 
             def active_conversation
@@ -29,8 +34,24 @@ module ActiveAdminChat
             def messages
               return [] unless active_conversation
 
-              active_conversation.public_send(ActiveAdminChat.message_relation_name.pluralize)
-                                 .includes(:sender).order(created_at: :asc)
+              page_messages = active_conversation.public_send(ActiveAdminChat
+                                                              .message_relation_name
+                                                              .pluralize)
+                                                 .includes(:sender).order(created_at: :desc)
+
+              params[:created_at] &&
+                page_messages.where('created_at < ?', DateTime.parse(params[:created_at]))
+                             .limit(ActiveAdminChat.messages_per_page).reverse ||
+                page_messages.limit(ActiveAdminChat.messages_per_page.to_i).reverse
+            end
+
+            private
+
+            def render_message_partial(message)
+              ApplicationController.render(
+                partial: 'messages/message',
+                locals: { message: message }
+              )
             end
 
             def create

@@ -4,4 +4,5 @@ ActiveAdminChat.setup do |config|
   config.message_model_name = 'text'
   config.admin_user_model_name = 'admin_user'
   config.user_model_name = 'api/person'
+  config.messages_per_page = 25
 end
