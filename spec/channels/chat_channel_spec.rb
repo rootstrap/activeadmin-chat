@@ -6,7 +6,7 @@ require 'factories/person'
 
 describe ChatChannel, type: :channel do
   context 'with an admin user' do
-    let!(:admin) { create(:admin_user) }
+    let(:admin) { create(:admin_user) }
 
     before do
       stub_connection current_user: admin
