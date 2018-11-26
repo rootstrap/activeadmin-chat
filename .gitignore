@@ -10,3 +10,4 @@ spec/dummy/storage/
 spec/dummy/tmp/
 spec/tmp/
 node_modules/
+Gemfile.lock
