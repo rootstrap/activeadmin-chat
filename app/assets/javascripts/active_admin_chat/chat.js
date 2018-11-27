@@ -1,8 +1,7 @@
 $(function() {
-  _reframeTime();
+  _reframeTime($('.active-admin-chat__message-container'));
   _scrollConversationToBottom();
   _subscribeChannel();
-  var olderDate;
   var gettingNewMessages = false;
 
   $('#send-message').on('keypress', function(event) {
@@ -11,33 +10,29 @@ $(function() {
     }
   });
 
-  function _reframeTime() {
-    $('.active-admin-chat__message-container').each(function(index, object) {
-      _addTime(object);
+  function _reframeTime(messages) {
+    messages.each(function(index, object) {
+      if (object.childNodes.length != 0){
+        _addTime(object);
+      }
     })
   }
 
-  $('.active-admin-chat__conversation-history').bind('scroll', function() {
-    if($(this).scrollTop() == 0) {
+  $('.active-admin-chat__conversation-history').on('scroll', function() {
+    if ($(this).scrollTop() === 0) {
       if (!gettingNewMessages) {
         gettingNewMessages = true;
-
+        var urlParam = '?created_at=' + (_getOlderDate().toString());
         $.ajax({
           type: 'GET',
-          url: ActiveAdminChat.conversationEndpoint + _getConversationId() + '?created_at=' + (_getOlderDate().toString()),
+          url: window.location.href.split('?')[0] + urlParam,
           dataType: 'json',
           context: this,
           success: function(data) {
-            if (data.length) {
-              olderDate = new Date($(data[0]).attr('data-time'));
-            }
             var currentTopElement = $(this).children().first();
-            $.each(data.reverse(), function(i, message) {
-              var realTime = formatDate(new Date());
-              var message2 = $(message).clone();
-              message2.children().append('<span>'+ realTime + '</span>');
-              $('.active-admin-chat__conversation-history').prepend(message2);
-            });
+            var messagesDOM = $(data.messages);
+            _reframeTime(messagesDOM);
+            $('.active-admin-chat__conversation-history').prepend(messagesDOM);
             var previousHeight = 0;
             currentTopElement.prevAll().each(function() {
               previousHeight += $(this).outerHeight();
@@ -51,15 +46,8 @@ $(function() {
   })
 
   function _getOlderDate() {
-    if (!olderDate) {
-      $('.active-admin-chat__message-container').each(function(index, object) {
-        var date = new Date($(object).attr('data-time'));
-        if (!olderDate || (date < olderDate)) {
-          olderDate = date;
-        }
-      });
-    }
-    return olderDate;
+    var date = $('.active-admin-chat__conversation-history').children().first().data('time')
+    return new Date(date);
   }
 
   function _scrollConversationToBottom() {
@@ -78,7 +66,8 @@ $(function() {
     var inputValue = $(this).val();
     if (inputValue) {
       ActiveAdminChat.conversation.sendMessage(inputValue);
-      $('.active-admin-chat__conversation-history').animate({ scrollTop: $('.active-admin-chat__conversation-history').get(0).scrollHeight });
+      var scrollHeight = $('.active-admin-chat__conversation-history').get(0).scrollHeight;
+      $('.active-admin-chat__conversation-history').animate({ scrollTop: scrollHeight });
       $(this).val('');
     }
   };

@@ -23,9 +23,5 @@ module ActiveAdminChat
         public_send("#{attribute}_model_name").split('/').last
       end
     end
-
-    define_method :messages_per_page do
-      @messages_per_page
-    end
   end
 end

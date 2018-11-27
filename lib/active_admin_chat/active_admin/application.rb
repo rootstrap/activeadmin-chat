@@ -17,9 +17,17 @@ module ActiveAdminChat
               respond_to do |format|
                 format.html { render 'chat/show' }
                 format.json do
-                  render json: messages.map { |message| render_message_partial(message) }
+                  render json: { messages: render_messages_partial }
                 end
               end
+            end
+
+            def create
+              conversation = ActiveAdminChat.conversation_klass
+                                            .find_or_create_by!(
+                                              "#{user_relation_name_id}": params[:"#{user_relation_name_id}"]
+                                            )
+              redirect_to action: 'show', id: conversation
             end
 
             def active_conversation
@@ -39,30 +47,20 @@ module ActiveAdminChat
                                                               .pluralize)
                                                  .includes(:sender).order(created_at: :desc)
 
-              params[:created_at] &&
-                page_messages.where('created_at < ?', DateTime.parse(params[:created_at]))
-                             .limit(ActiveAdminChat.messages_per_page).reverse ||
-                page_messages.limit(ActiveAdminChat.messages_per_page.to_i).reverse
+              if params[:created_at].present?
+                page_messages = page_messages.where('created_at < ?', DateTime.parse(params[:created_at]))
+              end
+              page_messages.limit(ActiveAdminChat.messages_per_page).reverse
             end
 
             private
 
-            def render_message_partial(message)
+            def render_messages_partial
               ApplicationController.render(
-                partial: 'messages/message',
-                locals: { message: message }
+                partial: 'messages/messages',
+                locals: { messages: messages }
               )
             end
-
-            def create
-              conversation = ActiveAdminChat.conversation_klass
-                                            .find_or_create_by!(
-                                              "#{user_relation_name_id}": params[:"#{user_relation_name_id}"]
-                                            )
-              redirect_to action: 'show', id: conversation
-            end
-
-            private
 
             def user_relation_name_id
               "#{ActiveAdminChat.user_relation_name}_id"
