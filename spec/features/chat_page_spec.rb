@@ -123,7 +123,9 @@ feature 'Visit the chat page and use the pagination', js: true do
     end
 
     expect(page).to have_selector('.active-admin-chat__message-container', count: 50)
+    expect(page).to have_content('Person 1 newest chat messages')
     expect(page).to have_content('Person 1 older chat messages')
+    expect(page).not_to have_content('Person 1 oldest chat messages')
 
     within '.active-admin-chat__conversation-history' do
       top_message = page.find('.active-admin-chat__message-container', match: :first)
@@ -131,6 +133,8 @@ feature 'Visit the chat page and use the pagination', js: true do
     end
 
     expect(page).to have_selector('.active-admin-chat__message-container', count: 55, wait: 3)
+    expect(page).to have_content('Person 1 newest chat messages')
+    expect(page).to have_content('Person 1 older chat messages')
     expect(page).to have_content('Person 1 oldest chat messages')
   end
 end

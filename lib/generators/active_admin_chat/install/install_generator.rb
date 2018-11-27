@@ -14,6 +14,7 @@ module ActiveAdminChat
         @message_model_name = options['message_model_name'].underscore.singularize
         @admin_user_model_name = options['admin_user_model_name'].underscore.singularize
         @user_model_name = options['user_model_name'].underscore.singularize
+        @messages_per_page = 25
       end
 
       def copy_initializer

@@ -1,4 +1,4 @@
-<div id="message-<%= message.id %>" data-time="<%= message.created_at.iso8601 %>" class="active-admin-chat__message-container <%= admin_class(message) %>">
+<div id="message-<%= message.id %>" data-time="<%= message.created_at.iso8601(3) %>" class="active-admin-chat__message-container <%= admin_class(message) %>">
   <div>
     <p><%= message.content %></p>
   </div>

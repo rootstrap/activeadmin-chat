@@ -6,9 +6,7 @@
       <% if active_conversation && messages.empty? %>
           <div class='active-admin-chat__conversation-history no-messages'>No messages</div>
       <% else %>
-        <% messages.each do |message| %>
-          <%= render partial: 'messages/message', locals: { message: message } %>
-        <% end %>
+        <%= render partial: 'messages/messages' %>
       <% end %>
     </div>
     <div class='active-admin-chat__send-message-container'>
@@ -16,8 +14,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  window.ActiveAdminChat = window.ActiveAdminChat || {};
-  window.ActiveAdminChat.conversationEndpoint = '<%= "/#{ActiveAdminChat.namespace}/#{ActiveAdminChat.page_name}/" %>';
-</script>
