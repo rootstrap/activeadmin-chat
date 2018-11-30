@@ -30,9 +30,7 @@ $(function() {
           context: this,
           success: function(data) {
             var currentTopElement = $(this).children().first();
-            var messagesDOM = $(data.messages);
-            _reframeTime(messagesDOM);
-            $('.active-admin-chat__conversation-history').prepend(messagesDOM);
+            $('.active-admin-chat__conversation-history').prepend(data.messages.map( message => _messageToHtml(message)));
             var previousHeight = 0;
             currentTopElement.prevAll().each(function() {
               previousHeight += $(this).outerHeight();
@@ -57,10 +55,19 @@ $(function() {
 
   function _insertMessage(message) {
     $('.active-admin-chat__conversation-history.no-messages').remove();
-    var messageDOM = $(message);
-    _addTime(messageDOM);
-    $('.active-admin-chat__conversation-history').append(messageDOM);
+    $('.active-admin-chat__conversation-history').append(_messageToHtml(message));
   };
+
+  function _messageToHtml(message) {
+    var adminClass = message.is_admin ? 'admin' : '';
+    var messageHTML = "<div id='message-" + message.id + "' data-time='" + message.date +"' class='active-admin-chat__message-container " + adminClass + "'>" +
+                        "<div>" +
+                          "<p>" + message.message + "</p>" +
+                          "<span class='active-admin-chat__time'>" + formatDate(new Date(message.date)) + "</span>" +
+                          "</div>" +
+                      "</div>";
+    return messageHTML;
+  }
 
   function _sendMessage(event) {
     var inputValue = $(this).val();
@@ -72,7 +79,7 @@ $(function() {
     }
   };
 
-  function _getConversationId(){
+  function _getConversationId() {
     var conversation = $('.active-admin-chat__conversation-item.selected').attr('id');
     return conversation.split('-')[1];
   }
@@ -95,11 +102,5 @@ $(function() {
     var reg = /(.+), (\d{2}):(\d{2}):(\d{2})/;
     var matches = date.toLocaleString('en-US', { hour12: false }).match(reg);
     return matches[2] + ':' + matches[3] + ' - ' + matches[1];
-  }
-
-  function _addTime(element) {
-    var date = new Date($(element).data('time'));
-    var realTime = formatDate(date);
-    $(element).children().append('<span>'+ realTime + '</span>');
   }
 });

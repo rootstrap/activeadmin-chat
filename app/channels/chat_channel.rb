@@ -9,7 +9,7 @@ class ChatChannel < ApplicationCable::Channel
       content: data['message']
     )
 
-    ChatChannel.broadcast_to(conversation, render_message_partial(message))
+    ChatChannel.broadcast_to(conversation, ActiveAdminChat::MessagePresenter.new(message))
   end
 
   private
@@ -23,12 +23,5 @@ class ChatChannel < ApplicationCable::Channel
                           "#{ActiveAdminChat.user_relation_name}_id": current_user.id
                         )
                       end
-  end
-
-  def render_message_partial(message)
-    ApplicationController.render(
-      partial: 'messages/message',
-      locals: { message: message }
-    )
   end
 end

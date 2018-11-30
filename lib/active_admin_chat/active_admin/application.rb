@@ -17,7 +17,7 @@ module ActiveAdminChat
               respond_to do |format|
                 format.html { render 'chat/show' }
                 format.json do
-                  render json: { messages: render_messages_partial }
+                  render json: ActiveAdminChat::MessagePresenter.all(messages)
                 end
               end
             end
@@ -54,13 +54,6 @@ module ActiveAdminChat
             end
 
             private
-
-            def render_messages_partial
-              ApplicationController.render(
-                partial: 'messages/messages',
-                locals: { messages: messages }
-              )
-            end
 
             def user_relation_name_id
               "#{ActiveAdminChat.user_relation_name}_id"

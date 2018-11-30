@@ -4,6 +4,7 @@ require 'active_admin_chat/active_admin'
 require 'active_admin_chat/active_admin/application'
 require 'active_admin_chat/application'
 require 'active_admin_chat/active_admin/index_table_for'
+require 'active_admin_chat/message_presenter'
 
 module ActiveAdminChat
   extend self
