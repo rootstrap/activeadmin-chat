@@ -99,6 +99,19 @@ ActiveAdmin.register_chat 'Chat' do
 end
 ```
 
+
+If you'd like to add a button in the user's index in the admin dashboard to start a chat with a user:
+```ruby
+ActiveAdmin.register_chat User do
+  index do
+    # your code
+    actions do |user|
+      send_message_link user
+    end
+  end
+end
+```
+
 ## Prerequisites
 - It assumes you have models for your admins and users in place.
 - It assumes that your users have an `email` attribute.
