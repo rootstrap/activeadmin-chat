@@ -30,7 +30,9 @@ $(function() {
           context: this,
           success: function(data) {
             var currentTopElement = $(this).children().first();
-            $('.active-admin-chat__conversation-history').prepend(data.messages.map( message => _messageToHtml(message)));
+            $('.active-admin-chat__conversation-history').prepend(data.messages.map(function(message){
+              return _messageToHtml(message);
+            }));
             var previousHeight = 0;
             currentTopElement.prevAll().each(function() {
               previousHeight += $(this).outerHeight();
@@ -64,7 +66,7 @@ $(function() {
                         "<div>" +
                           "<p>" + message.message + "</p>" +
                           "<span class='active-admin-chat__time'>" + formatDate(new Date(message.date)) + "</span>" +
-                          "</div>" +
+                        "</div>" +
                       "</div>";
     return messageHTML;
   }
@@ -102,5 +104,11 @@ $(function() {
     var reg = /(.+), (\d{2}):(\d{2}):(\d{2})/;
     var matches = date.toLocaleString('en-US', { hour12: false }).match(reg);
     return matches[2] + ':' + matches[3] + ' - ' + matches[1];
+  }
+
+  function _addTime(element) {
+    var date = new Date($(element).data('time'));
+    var realTime = formatDate(date);
+    $(element).children().append('<span>'+ realTime + '</span>');
   }
 });
