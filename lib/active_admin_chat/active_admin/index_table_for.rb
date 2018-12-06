@@ -5,8 +5,14 @@ module ActiveAdminChat
         module IndexTableFor
           def send_message_link(resource)
             text_node link_to 'Send Message',
-                              "#{ActiveAdminChat.user_model_name}/#{resource.id}/#{ActiveAdminChat.page_name}",
+                              send_message_path(resource.id),
                               method: :post
+          end
+
+          private
+
+          def send_message_path(id)
+            "#{ActiveAdminChat.user_model_name}/#{id}/#{ActiveAdminChat.page_name}"
           end
         end
       end

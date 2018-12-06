@@ -23,10 +23,11 @@ module ActiveAdminChat
             end
 
             def create
-              conversation = ActiveAdminChat.conversation_klass
-                                            .find_or_create_by!(
-                                              "#{user_relation_name_id}": params[:"#{user_relation_name_id}"]
-                                            )
+              conversation =
+                ActiveAdminChat.conversation_klass
+                               .find_or_create_by!(
+                                 "#{user_relation_name_id}": params[:"#{user_relation_name_id}"]
+                               )
               redirect_to action: 'show', id: conversation
             end
 
@@ -48,7 +49,8 @@ module ActiveAdminChat
                                                  .includes(:sender).order(created_at: :desc)
 
               if params[:created_at].present?
-                page_messages = page_messages.where('created_at < ?', DateTime.parse(params[:created_at]))
+                page_messages = page_messages.where('created_at < ?',
+                                                    DateTime.parse(params[:created_at]))
               end
               page_messages.limit(ActiveAdminChat.messages_per_page).reverse
             end
