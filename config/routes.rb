@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace ActiveAdminChat.namespace do
       get  "#{ActiveAdminChat.page_name}/:id", to: "#{ActiveAdminChat.page_name}#show"
       post "#{ActiveAdminChat.user_model_name}/:#{ActiveAdminChat.user_relation_name}_id/#{ActiveAdminChat.page_name}",
-        to: "#{ActiveAdminChat.page_name}#create"
+           to: "#{ActiveAdminChat.page_name}#create"
     end
   end
 end

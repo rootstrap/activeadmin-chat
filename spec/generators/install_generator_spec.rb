@@ -43,7 +43,7 @@ describe ActiveAdminChat::Generators::InstallGenerator, type: :generator do
             contains "config.message_model_name = 'message'"
             contains "config.admin_user_model_name = 'admin_user'"
             contains "config.user_model_name = 'api/user'"
-            contains "config.messages_per_page = 25"
+            contains 'config.messages_per_page = 25'
           end
         end
       end

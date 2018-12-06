@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - spec/dummy/db/schema.rb
+    - vendor/bundle/**/*
 
 Documentation:
   Enabled: false
@@ -62,6 +63,7 @@ Metrics/LineLength:
   Exclude:
     - spec/dummy/**/*
     - spec/channels/chat_channel_spec.rb
+    - config/routes.rb
 
 Metrics/ParameterLists:
   Max: 5

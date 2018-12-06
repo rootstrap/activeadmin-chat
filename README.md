@@ -1,4 +1,7 @@
 # ActiveAdminChat
+
+[![Build Status](https://travis-ci.org/rootstrap/active_admin_chat.svg?branch=master)](https://travis-ci.org/rootstrap/active_admin_chat)
+
 Get a chat for your ActiveAdmin app out of the box.
 
 ## Installation

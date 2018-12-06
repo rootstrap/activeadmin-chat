@@ -33,4 +33,7 @@ end
 
 ::ActiveAdmin.send :include, ActiveAdminChat::ActiveAdmin
 ::ActiveAdmin::Application.send :include, ActiveAdminChat::ActiveAdmin::Application
-::ActiveAdmin::Views::IndexAsTable::IndexTableFor.send :prepend, ActiveAdminChat::ActiveAdmin::Views::IndexAsTable::IndexTableFor
+::ActiveAdmin::Views::IndexAsTable::IndexTableFor.send(
+  :prepend,
+  ActiveAdminChat::ActiveAdmin::Views::IndexAsTable::IndexTableFor
+)
