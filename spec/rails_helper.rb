@@ -8,6 +8,8 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'action_cable/testing/rspec'
 require 'selenium/webdriver'
+require 'simplecov'
+SimpleCov.start
 
 # Setup ActiveAdmin
 ActiveAdmin.application.load_paths = [File.expand_path('dummy/app/admin', __dir__)]

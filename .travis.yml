@@ -1,3 +1,7 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=796169b8dd8f24e0dfbe4ce3f7c3c3f95f5ecc5475b95871f1797664f6b2b3e3
+
 language: ruby
 cache: bundler
 rvm:
@@ -9,3 +13,9 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install chromium-chromedriver
   - "export PATH=$PATH:/usr/lib/chromium-browser/"
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
