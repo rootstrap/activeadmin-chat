@@ -1,6 +1,8 @@
 # ActiveAdminChat
 
 [![Build Status](https://travis-ci.org/rootstrap/active_admin_chat.svg?branch=master)](https://travis-ci.org/rootstrap/active_admin_chat)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7a8d43aef79218e8f772/maintainability)](https://codeclimate.com/github/rootstrap/active_admin_chat/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7a8d43aef79218e8f772/test_coverage)](https://codeclimate.com/github/rootstrap/active_admin_chat/test_coverage)
 
 Get a chat for your ActiveAdmin app out of the box.
 
