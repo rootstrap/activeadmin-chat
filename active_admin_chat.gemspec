@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'action-cable-testing'
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'capybara'
+  s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'factory_bot_rails'
   s.add_development_dependency 'generator_spec'
   s.add_development_dependency 'puma'

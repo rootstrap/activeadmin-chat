@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - spec/dummy/db/schema.rb
     - vendor/bundle/**/*
+    - gemfiles/vendor/bundle/**/*
 
 Documentation:
   Enabled: false

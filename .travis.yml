@@ -5,11 +5,16 @@ env:
 language: ruby
 cache: bundler
 rvm:
-  - 2.5.1
+  - 2.2.10
+  - 2.3.8
+  - 2.4.5
+  - 2.5.3
+  - ruby-head
 
 sudo: required
 
 before_install:
+  - bundle install
   - sudo apt-get update
   - sudo apt-get install chromium-chromedriver
   - "export PATH=$PATH:/usr/lib/chromium-browser/"
@@ -19,3 +24,16 @@ before_install:
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+gemfile:
+  - gemfiles/5.0.gemfile
+  - gemfiles/5.1.gemfile
+  - gemfiles/5.2.gemfile
+
+matrix:
+  fast_finish: true
+  exclude:
+    - gemfile: gemfiles/5.2.gemfile
+      rvm: 2.2.10
+  allow_failures:
+    - rvm: ruby-head
