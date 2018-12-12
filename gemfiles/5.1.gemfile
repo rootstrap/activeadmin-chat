@@ -1,0 +1,20 @@
+source 'https://rubygems.org'
+
+gem 'activeadmin', '~> 1.2.1'
+gem 'rails', '~> 5.1.0'
+
+group :development, :test do
+  gem 'action-cable-testing'
+  gem 'byebug'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'generator_spec'
+  gem 'puma'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'rubocop', '~> 0.59.2'
+  gem 'selenium-webdriver'
+  gem 'simplecov'
+  gem 'sqlite3'
+  gem 'timecop'
+end

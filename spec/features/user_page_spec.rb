@@ -12,7 +12,6 @@ feature 'Visit the users page', js: true do
 
   scenario 'see the conversation already created and send a message' do
     visit admin_api_people_path
-
     expect(page).to have_content('Send Message')
 
     within("#api_person_#{person1.id}") do
