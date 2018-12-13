@@ -7,8 +7,8 @@ require 'active_admin_chat/version'
 Gem::Specification.new do |s|
   s.name        = 'active_admin_chat'
   s.version     = ActiveAdminChat::VERSION
-  s.authors     = ['Santiago Bartesaghi']
-  s.email       = ['santiago.bartesaghi@rootstrap.com']
+  s.authors     = ['Santiago Bartesaghi', 'Federico Aldunate']
+  s.email       = ['santiago.bartesaghi@rootstrap.com', 'federico@rootstrap.com']
   s.homepage    = 'https://github.com/rootstrap/active_admin_chat'
   s.summary     = 'ActiveAdmin chat plugin'
   s.description = s.summary
