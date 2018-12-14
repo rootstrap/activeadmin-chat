@@ -6,6 +6,13 @@
 
 Get a chat for your ActiveAdmin app out of the box.
 
+![](active_admin_chat_gif.gif)
+
+## Prerequisites
+- It assumes you have models for your admins and users in place.
+- It assumes that your users have an `email` attribute.
+- For production you need to configure ActionCable by providing it with a Redis or Postgres connection in `config/cable.yml`.
+
 ## Installation
 Add to Gemfile:
 ```ruby
@@ -23,8 +30,8 @@ $ rails generate active_admin_chat:install
 ```
 It will generate:
   - `Conversation` and `Message` models and migrations.
-  - Initializer that configures the model names for conversation, message, admin user and user
-  - Default chat page
+  - Initializer that configures the model names for conversation, message, admin user and user.
+  - Default chat page.
 
 You can customize the namings of the models when installing ActiveAdminChat with the usage of the `--conversation_model_name`, `--message_model_name`, `--admin_user_model_name` and `--user_model_name` flags.
 
@@ -47,6 +54,9 @@ And including of JS to `app/assets/javascripts/active_admin.js`:
 ```js
 #= require active_admin_chat
 ```
+
+### Example diagram
+![](admin_chat_diagram.png?raw=true "Chat diagram")
 
 ## Usage
 All you need to get the chat up and running is to authenticate your users in the websocket connection in `app/channels/application_cable/connection.rb`. It's important that you identify them as the `current_user` here, this will be used by the gem internally.
@@ -116,11 +126,6 @@ ActiveAdmin.register_chat User do
   end
 end
 ```
-
-## Prerequisites
-- It assumes you have models for your admins and users in place.
-- It assumes that your users have an `email` attribute.
-- For production you need to configure ActionCable by providing it with a Redis or Postgres connection in `config/cable.yml`.
 
 ## Contributing
 Bug reports (please use Issues) and pull requests are welcome on GitHub at https://github.com/rootstrap/active_admin_chat. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
