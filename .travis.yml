@@ -5,7 +5,7 @@ env:
 language: ruby
 cache: bundler
 rvm:
-  - 2.2.10
+  - 2.2.2
   - 2.3.8
   - 2.4.5
   - 2.5.3
@@ -34,6 +34,6 @@ matrix:
   fast_finish: true
   exclude:
     - gemfile: gemfiles/5.2.gemfile
-      rvm: 2.2.10
+      rvm: 2.2.2
   allow_failures:
     - rvm: ruby-head
