@@ -23,11 +23,13 @@ module ActiveAdminChat
             end
 
             def create
+              find_params = { "#{user_relation_name_id}": params[:"#{user_relation_name_id}"] }
+              if multi_chat?
+                find_params[admin_user_relation_name_id.to_sym] = current_active_admin_user.id
+              end
               conversation =
                 ActiveAdminChat.conversation_klass
-                               .find_or_create_by!(
-                                 "#{user_relation_name_id}": params[:"#{user_relation_name_id}"]
-                               )
+                               .find_or_create_by!(find_params)
               redirect_to action: 'show', id: conversation
             end
 
@@ -36,8 +38,16 @@ module ActiveAdminChat
             end
 
             def conversations
-              @conversations ||= ActiveAdminChat.conversation_klass
-                                                .includes(ActiveAdminChat.user_relation_name)
+              if multi_chat?
+                @conversations ||= ActiveAdminChat
+                                   .conversation_klass
+                                   .where(
+                                     "#{admin_user_relation_name_id}": current_active_admin_user.id
+                                   )
+              else
+                @conversations ||= ActiveAdminChat.conversation_klass
+                                                  .includes(ActiveAdminChat.user_relation_name)
+              end
             end
 
             def messages
@@ -59,6 +69,16 @@ module ActiveAdminChat
 
             def user_relation_name_id
               "#{ActiveAdminChat.user_relation_name}_id"
+            end
+
+            def admin_user_relation_name_id
+              "#{ActiveAdminChat.admin_user_relation_name}_id"
+            end
+
+            def multi_chat?
+              ActiveAdminChat.conversation_klass
+                             .instance_methods
+                             .include?(ActiveAdminChat.admin_user_relation_name.to_sym)
             end
           end
 
