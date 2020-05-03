@@ -12,3 +12,4 @@ spec/tmp/
 node_modules/
 /coverage/
 Gemfile.lock
+gemfiles/*.lock

@@ -39,7 +39,7 @@ describe ChatChannel, type: :channel do
         subscribe(conversation_id: conversation.id)
 
         expect(subscription).to be_confirmed
-        expect(streams).to eq(["chat:#{conversation.to_gid_param}"])
+        expect(subscription).to have_stream_for(conversation)
       end
 
       it 'broadcasts a message' do
@@ -95,7 +95,7 @@ describe ChatChannel, type: :channel do
         subscribe
 
         expect(subscription).to be_confirmed
-        expect(streams).to eq(["chat:#{conversation.to_gid_param}"])
+        expect(subscription).to have_stream_for(conversation)
       end
 
       it "subscribes to the user's conversation stream ignoring the conversation_id" do
@@ -103,7 +103,7 @@ describe ChatChannel, type: :channel do
         subscribe(conversation_id: other_conversation.id)
 
         expect(subscription).to be_confirmed
-        expect(streams).to eq(["chat:#{conversation.to_gid_param}"])
+        expect(subscription).to have_stream_for(conversation)
       end
 
       it 'broadcasts a message' do
