@@ -11,7 +11,11 @@ rvm:
   - 2.5.3
   - ruby-head
 
-sudo: required
+addons:
+  chrome: stable
+
+dist: xenial
+os: linux
 
 before_install:
   - bundle install
@@ -30,7 +34,7 @@ gemfile:
   - gemfiles/5.1.gemfile
   - gemfiles/5.2.gemfile
 
-matrix:
+jobs:
   fast_finish: true
   exclude:
     - gemfile: gemfiles/5.2.gemfile
