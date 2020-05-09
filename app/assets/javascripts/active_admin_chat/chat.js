@@ -92,7 +92,11 @@ $(function() {
       conversation_id: _getConversationId()
     }, {
       received: function(data) {
-        _insertMessage(data);
+        if (data.cableReady) {
+          CableReady.perform(data.operations);
+        } else {
+          _insertMessage(data);
+        }
       },
       sendMessage: function(data) {
         this.perform('speak', { message: data });

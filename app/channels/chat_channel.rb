@@ -1,4 +1,8 @@
+require 'cable_ready'
+
 class ChatChannel < ApplicationCable::Channel
+  include ::CableReady::Broadcaster
+
   def subscribed
     conversation ? stream_for(conversation) : reject
   end
@@ -9,7 +13,12 @@ class ChatChannel < ApplicationCable::Channel
       content: data['message']
     )
 
-    ChatChannel.broadcast_to(conversation, ActiveAdminChat::MessagePresenter.new(message))
+    cable_ready["chat:#{broadcasting_for(conversation)}"].insert_adjacent_html(
+      selector: ".active-admin-chat__conversation-history",
+      position: "beforeend",
+      html: "<p>#{data['message']}</p>"
+    )
+    cable_ready.broadcast
   end
 
   private
