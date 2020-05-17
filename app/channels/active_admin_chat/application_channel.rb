@@ -18,8 +18,7 @@ module ActiveAdminChat
       cable_ready["active_admin_chat:admin_chat:#{broadcasting_for(conversation)}"].insert_adjacent_html(
         selector: ".active-admin-chat__conversation-history",
           position: "beforeend",
-          html: "<p>#{data['message']}</p>"
-      )
+          html: ActionController::Base.render(partial: 'messages/message', locals: { message: message }))
       cable_ready.broadcast
     end
 

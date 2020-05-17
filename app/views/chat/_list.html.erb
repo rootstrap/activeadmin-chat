@@ -3,7 +3,7 @@
   <ul class='active-admin-chat__conversations-list'>
     <% conversations.each do |conversation| %>
       <a href='<%= "/#{ActiveAdminChat.namespace}/#{ActiveAdminChat.page_name}/#{conversation.id}" %>' >
-        <li id='conversation-<%= conversation.id %>' class='active-admin-chat__conversation-item <%= selected_class(conversation, active_conversation) %>'>
+        <li id='conversation-<%= conversation.id %>' class='active-admin-chat__conversation-item <%= 'selected' if active_conversation && active_conversation == conversation %>'>
           <%= conversation.public_send(:"#{ActiveAdminChat.user_relation_name}").email %>
         </li>
       </a>

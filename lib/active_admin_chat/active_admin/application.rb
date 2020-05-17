@@ -17,7 +17,18 @@ module ActiveAdminChat
               respond_to do |format|
                 format.html { render 'chat/show' }
                 format.json do
-                  render json: ActiveAdminChat::MessagePresenter.all(messages)
+                  render json: {
+                    operations: [{
+                      name: 'insertAdjacentHTML',
+                      selector: '.active-admin-chat__conversation-history',
+                      position: 'afterbegin',
+                      html: render_to_string(
+                        partial: 'messages/messages',
+                        locals: { messages: messages },
+                        formats: :html
+                      )
+                    }]
+                  }
                 end
               end
             end
