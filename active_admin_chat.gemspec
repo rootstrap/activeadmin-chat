@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.2.2'
 
   s.add_dependency 'activeadmin', '>= 1.0.0'
+  s.add_dependency "cable_ready", "~> 4.0"
   s.add_dependency 'rails', '>= 5.0.0'
   s.add_dependency 'sassc-rails', '~> 2.1.2'
 
