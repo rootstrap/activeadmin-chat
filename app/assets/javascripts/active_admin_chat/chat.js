@@ -13,15 +13,13 @@ $(function() {
   /////////////////////
 
   $('#send-message').on('keypress', function(event) {
-    if (event.which === 13) {
-      _sendMessage.call(this, event);
-    }
+    if (event.which === 13) { _sendMessage.call(this, event); }
   });
 
   $('.active-admin-chat__conversation-history').on('scroll', function() {
     if ($(this).scrollTop() === 0 && !gettingNewMessages) {
       gettingNewMessages = true;
-      var urlParam = '?created_at=' + (_getOlderDate().toString());
+      var urlParam = '?created_at=' + _getOlderDate().toString();
       $.ajax({
         type: 'GET',
         url: window.location.href.split('?')[0] + urlParam,
@@ -61,15 +59,13 @@ $(function() {
 
   function _scrollConversationToBottom() {
     var height = $('.active-admin-chat__conversation-history').get(0).scrollHeight;
-    $('.active-admin-chat__conversation-history').scrollTop(height);
+    $('.active-admin-chat__conversation-history').animate({ scrollTop: height }, { duration: 'fast' });
   }
 
   function _sendMessage(event) {
     var inputValue = $(this).val();
     if (inputValue) {
       ActiveAdminChat.conversation.sendMessage(inputValue);
-      var scrollHeight = $('.active-admin-chat__conversation-history').get(0).scrollHeight;
-      $('.active-admin-chat__conversation-history').animate({ scrollTop: scrollHeight });
       $(this).val('');
     }
   };
@@ -82,6 +78,7 @@ $(function() {
       received: function(data) {
         CableReady.perform(data.operations);
         _reframeTime();
+        _scrollConversationToBottom();
       },
       sendMessage: function(data) {
         this.perform('speak', { message: data });
