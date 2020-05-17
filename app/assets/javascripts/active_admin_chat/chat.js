@@ -88,7 +88,7 @@ $(function() {
 
   function _subscribeChannel() {
     ActiveAdminChat.conversation = ActiveAdminChat.cable.subscriptions.create({
-      channel: 'ChatChannel',
+      channel: 'ActiveAdminChat::AdminChatChannel',
       conversation_id: _getConversationId()
     }, {
       received: function(data) {
