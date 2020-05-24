@@ -85,3 +85,9 @@ Style/MixinUsage:
 Style/GuardClause:
   Exclude:
     - lib/generators/active_admin/chat/install/install_generator.rb
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
