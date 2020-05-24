@@ -1,12 +1,12 @@
-# ActiveAdminChat
+# ActiveAdmin::Chat
 
-[![Build Status](https://travis-ci.org/rootstrap/active_admin_chat.svg?branch=master)](https://travis-ci.org/rootstrap/active_admin_chat)
-[![Maintainability](https://api.codeclimate.com/v1/badges/7a8d43aef79218e8f772/maintainability)](https://codeclimate.com/github/rootstrap/active_admin_chat/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/7a8d43aef79218e8f772/test_coverage)](https://codeclimate.com/github/rootstrap/active_admin_chat/test_coverage)
+[![Build Status](https://travis-ci.org/rootstrap/activeadmin-chat.svg?branch=master)](https://travis-ci.org/rootstrap/activeadmin-chat)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7a8d43aef79218e8f772/maintainability)](https://codeclimate.com/github/rootstrap/activeadmin-chat/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7a8d43aef79218e8f772/test_coverage)](https://codeclimate.com/github/rootstrap/activeadmin-chat/test_coverage)
 
 Get a chat for your ActiveAdmin app out of the box.
 
-![](active_admin_chat_gif.gif)
+![](images/activeadmin-chat.gif)
 
 ## Prerequisites
 - It assumes you have models for your admins and users in place.
@@ -16,7 +16,7 @@ Get a chat for your ActiveAdmin app out of the box.
 ## Installation
 Add to Gemfile:
 ```ruby
-gem 'active_admin_chat'
+gem 'activeadmin-chat'
 ```
 
 And then run:
@@ -24,39 +24,39 @@ And then run:
 $ bundle install
 ```
 
-Install ActiveAdminChat:
+Install `ActiveAdmin::Chat`:
 ```bash
-$ rails generate active_admin_chat:install
+$ rails generate active_admin:chat:install
 ```
 It will generate:
   - `Conversation` and `Message` models and migrations.
   - Initializer that configures the model names for conversation, message, admin user and user.
   - Default chat page.
 
-You can customize the namings of the models when installing ActiveAdminChat with the usage of the `--conversation_model_name`, `--message_model_name`, `--admin_user_model_name` and `--user_model_name` flags.
+You can customize the namings of the models when installing `ActiveAdmin::Chat` with the usage of the `--conversation_model_name`, `--message_model_name`, `--admin_user_model_name` and `--user_model_name` flags.
 
 For example:
 ```bash
-$ rails generate active_admin_chat:install --conversation_model_name=chat
+$ rails generate active_admin:chat:install --conversation_model_name=chat
 ```
 
-Once you've successfully installed ActiveAdminChat, run:
+Once you've successfully installed `ActiveAdmin::Chat`, run:
 ```bash
 $ rails db:migrate
 ```
 
 Add including of CSS to `app/assets/stylesheets/active_admin.css.scss`:
 ```css
-@import 'active_admin_chat';
+@import 'active_admin/chat';
 ```
 
 And including of JS to `app/assets/javascripts/active_admin.js`:
 ```js
-#= require active_admin_chat
+#= require active_admin/chat
 ```
 
 ### Example diagram
-![](admin_chat_diagram.png?raw=true "Chat diagram")
+![](images/activeadmin-chat_diagram.png?raw=true "Chat diagram")
 
 ## Usage
 All you need to get the chat up and running is to authenticate your users in the websocket connection in `app/channels/application_cable/connection.rb`. It's important that you identify them as the `current_user` here, this will be used by the gem internally.
@@ -128,12 +128,12 @@ end
 ```
 
 ## Contributing
-Bug reports (please use Issues) and pull requests are welcome on GitHub at https://github.com/rootstrap/active_admin_chat. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports (please use Issues) and pull requests are welcome on GitHub at https://github.com/rootstrap/activeadmin-chat. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Credits
-**Active Admin Chat** is maintained by [Rootstrap](http://www.rootstrap.com) with the help of our [contributors](https://github.com/rootstrap/active_admin_chat/contributors).
+**Active Admin Chat** is maintained by [Rootstrap](http://www.rootstrap.com) with the help of our [contributors](https://github.com/rootstrap/activeadmin-chat/contributors).
 
 [<img src="https://s3-us-west-1.amazonaws.com/rootstrap.com/img/rs.png" width="100"/>](http://www.rootstrap.com)
