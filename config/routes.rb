@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  if ActiveAdminChat.method_defined?(:page_name) && ActiveAdminChat.page_name
-    namespace ActiveAdminChat.namespace do
-      get  "#{ActiveAdminChat.page_name}/:id", to: "#{ActiveAdminChat.page_name}#show"
-      post "#{ActiveAdminChat.user_model_name}/:#{ActiveAdminChat.user_relation_name}_id/#{ActiveAdminChat.page_name}",
-           to: "#{ActiveAdminChat.page_name}#create"
+  if ActiveAdmin::Chat.method_defined?(:page_name) && ActiveAdmin::Chat.page_name
+    namespace ActiveAdmin::Chat.namespace do
+      get  "#{ActiveAdmin::Chat.page_name}/:id", to: "#{ActiveAdmin::Chat.page_name}#show"
+      post "#{ActiveAdmin::Chat.user_model_name}/:#{ActiveAdmin::Chat.user_relation_name}_id/#{ActiveAdmin::Chat.page_name}",
+           to: "#{ActiveAdmin::Chat.page_name}#create"
     end
   end
 end

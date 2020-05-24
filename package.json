@@ -1,5 +1,5 @@
 {
-  "name": "active_admin_chat",
+  "name": "activeadmin-chat",
   "version": "1.0.0",
   "devDependencies": {
     "stylelint": "^13.3.3",

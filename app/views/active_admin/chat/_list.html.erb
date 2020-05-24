@@ -1,0 +1,12 @@
+<div class='active-admin-chat__conversations-list-container'>
+  <h3 class='active-admin-chat__title'><%= ActiveAdmin::Chat.conversation_relation_name.pluralize.capitalize %></h3>
+  <ul class='active-admin-chat__conversations-list'>
+    <% conversations.each do |conversation| %>
+      <a href='<%= "/#{ActiveAdmin::Chat.namespace}/#{ActiveAdmin::Chat.page_name}/#{conversation.id}" %>' >
+        <li id='conversation-<%= conversation.id %>' class='active-admin-chat__conversation-item <%= selected_class(conversation, active_conversation) %>'>
+          <%= conversation.public_send(:"#{ActiveAdmin::Chat.user_relation_name}").email %>
+        </li>
+      </a>
+    <% end %>
+  </ul>
+</div>
