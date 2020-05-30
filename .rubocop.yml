@@ -1,6 +1,8 @@
 AllCops:
   Exclude:
     - spec/dummy/db/schema.rb
+    - vendor/bundle/**/*
+    - gemfiles/vendor/bundle/**/*
 
 Documentation:
   Enabled: false
@@ -85,9 +87,3 @@ Style/MixinUsage:
 Style/GuardClause:
   Exclude:
     - lib/generators/active_admin/chat/install/install_generator.rb
-
-Style/TrailingCommaInArrayLiteral:
-  Enabled: false
-
-Style/TrailingCommaInHashLiteral:
-  Enabled: false
