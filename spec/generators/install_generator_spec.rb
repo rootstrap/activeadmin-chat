@@ -1,10 +1,10 @@
 require 'spec_helper'
 require 'generator_spec'
 # Generators are not automatically loaded by Rails
-require 'generators/active_admin_chat/install/install_generator'
+require 'generators/active_admin/chat/install/install_generator'
 require 'rails/generators/active_record/model/model_generator'
 
-describe ActiveAdminChat::Generators::InstallGenerator, type: :generator do
+describe ActiveAdmin::Chat::Generators::InstallGenerator, type: :generator do
   destination File.expand_path('../tmp', __dir__)
   ActiveRecord::Generators::ModelGenerator.send(:include, TestDestinationRoot)
   arguments %w[--conversation_model_name=chat --user_model_name=Api::User]
@@ -37,8 +37,8 @@ describe ActiveAdminChat::Generators::InstallGenerator, type: :generator do
       end
       directory 'config' do
         directory 'initializers' do
-          file 'active_admin_chat.rb' do
-            contains 'ActiveAdminChat.setup do |config|'
+          file 'active_admin/chat.rb' do
+            contains 'ActiveAdmin::Chat.setup do |config|'
             contains "config.conversation_model_name = 'chat'"
             contains "config.message_model_name = 'message'"
             contains "config.admin_user_model_name = 'admin_user'"

@@ -14,7 +14,7 @@ require 'sprockets/railtie'
 # require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
-require 'active_admin_chat'
+require 'active_admin/chat'
 
 module Dummy
   class Application < Rails::Application
