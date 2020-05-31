@@ -34,8 +34,6 @@ after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 gemfile:
-  - gemfiles/5.0.gemfile
-  - gemfiles/5.1.gemfile
   - gemfiles/5.2.gemfile
 
 jobs:
