@@ -1,8 +1,4 @@
 require 'rails_helper'
-require 'factories/admin_user'
-require 'factories/conversation'
-require 'factories/person'
-require 'factories/text'
 
 feature 'Visit the users page', js: true do
   given!(:admin) { create(:admin_user) }
