@@ -34,5 +34,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'selenium-webdriver', '~> 3.0'
   s.add_development_dependency 'simplecov', '~> 0.17.1'
   s.add_development_dependency 'sqlite3', '~> 1.4.0'
-  s.add_development_dependency 'timecop', '~> 0.9.1'
 end

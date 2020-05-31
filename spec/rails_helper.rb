@@ -10,6 +10,7 @@ require 'action_cable/testing/rspec'
 require 'database_cleaner'
 require 'selenium/webdriver'
 require 'simplecov'
+require 'factory_bot_rails'
 
 SimpleCov.start
 
@@ -55,6 +56,9 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include ActiveSupport::Testing::TimeHelpers
+  config.include FactoryBot::Syntax::Methods
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
