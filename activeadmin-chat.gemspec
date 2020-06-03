@@ -19,13 +19,13 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.2.2'
 
   s.add_dependency 'activeadmin', '>= 1.0.0'
+  s.add_dependency 'coffee-rails', '~> 5.0'
   s.add_dependency 'rails', '>= 5.0.0'
   s.add_dependency 'sassc-rails', '~> 2.1.2'
 
   s.add_development_dependency 'action-cable-testing', '~> 0.4.0'
   s.add_development_dependency 'byebug', '~> 10.0.0'
   s.add_development_dependency 'capybara', '~> 3.1.1'
-  s.add_development_dependency 'database_cleaner', '~> 1.8.4'
   s.add_development_dependency 'factory_bot_rails', '~> 4.11.1'
   s.add_development_dependency 'generator_spec', '~> 0.9.4'
   s.add_development_dependency 'puma', '~> 4.3.3'
@@ -34,5 +34,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'selenium-webdriver', '~> 3.0'
   s.add_development_dependency 'simplecov', '~> 0.17.1'
   s.add_development_dependency 'sqlite3', '~> 1.4.0'
-  s.add_development_dependency 'timecop', '~> 0.9.1'
 end

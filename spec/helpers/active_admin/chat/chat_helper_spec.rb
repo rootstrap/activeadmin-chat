@@ -1,8 +1,4 @@
 require 'rails_helper'
-require 'factories/admin_user'
-require 'factories/conversation'
-require 'factories/person'
-require 'factories/text'
 
 describe ActiveAdmin::Chat::ChatHelper, type: :helper do
   describe '#admin_class' do
