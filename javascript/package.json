@@ -1,0 +1,12 @@
+{
+  "name": "activeadmin-chat",
+  "version": "1.0.0",
+  "description": "Get a chat for your ActiveAdmin app out of the box.",
+  "main": "index.js",
+  "repository": "https://github.com/rootstrap/active_admin_chat",
+  "author": "Santiago Bartesaghi",
+  "license": "MIT",
+  "dependencies": {
+    "@rails/actioncable": "^6.0.3-1"
+  }
+}
