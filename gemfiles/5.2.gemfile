@@ -8,7 +8,7 @@ gem 'sassc-rails', '~> 2.1.2'
 group :development, :test do
   gem 'action-cable-testing', '~> 0.4.0'
   gem 'byebug', '~> 10.0.0'
-  gem 'capybara', '~> 3.1.1'
+  gem 'capybara', '~> 3.32.2'
   gem 'factory_bot_rails', '~> 4.11.1'
   gem 'generator_spec', '~> 0.9.4'
   gem 'puma', '~> 4.3.3'

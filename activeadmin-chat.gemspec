@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'action-cable-testing', '~> 0.4.0'
   s.add_development_dependency 'byebug', '~> 10.0.0'
-  s.add_development_dependency 'capybara', '~> 3.1.1'
+  s.add_development_dependency 'capybara', '~> 3.32.2'
   s.add_development_dependency 'factory_bot_rails', '~> 4.11.1'
   s.add_development_dependency 'generator_spec', '~> 0.9.4'
   s.add_development_dependency 'puma', '~> 4.3.3'
