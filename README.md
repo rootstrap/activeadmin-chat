@@ -24,6 +24,16 @@ And then run:
 $ bundle install
 ```
 
+This gem requires Webpacker for the Javascript. Add the npm package:
+```bash
+$ yarn add activeadmin-chat
+```
+
+And install it:
+```bash
+$ yarn install
+```
+
 Install `ActiveAdmin::Chat`:
 ```bash
 $ rails generate active_admin:chat:install
@@ -50,9 +60,9 @@ Add including of CSS to `app/assets/stylesheets/active_admin.css.scss`:
 @import 'active_admin/chat';
 ```
 
-And including of JS to `app/assets/javascripts/active_admin.js`:
+Create a file named `app/javascript/packs/activeadmin-chat.js`, with the following content:
 ```js
-#= require active_admin/chat
+import 'activeadmin-chat';
 ```
 
 ### Example diagram
