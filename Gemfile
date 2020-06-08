@@ -14,4 +14,4 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
-gem 'webpacker', '~> 5.0', group: [:development, :test]
+gem 'webpacker', '~> 5.0', group: %i[development test]
