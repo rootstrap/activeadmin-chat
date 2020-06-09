@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'coffee-rails', '~> 5.0'
   s.add_dependency 'rails', '>= 5.0.0'
   s.add_dependency 'sassc-rails', '~> 2.1.2'
+  s.add_dependency 'webpacker', '~> 5.0'
 
   s.add_development_dependency 'action-cable-testing', '~> 0.4.0'
   s.add_development_dependency 'byebug', '~> 10.0.0'
