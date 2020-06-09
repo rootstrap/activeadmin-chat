@@ -804,6 +804,11 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@rails/actioncable@^6.0.3-1":
+  version "6.0.3-1"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3-1.tgz#9b9eb8858a6507162911007d355d9a206e1c5caa"
+  integrity sha512-szFhWD+V5TAxVNVIG16klgq+ypqA5k5AecLarTTrXgOG8cawVbQdOAwLbCmzkwiQ60rGSxAFoC1u2LrzxSK2Aw==
+
 "@rails/webpacker@5.1.1":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-5.1.1.tgz#3c937aa719e46341f037a3f37349ef58085950df"
@@ -1053,6 +1058,13 @@ acorn@^6.4.1:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.1.tgz#531e58ba3f51b9dacb9a6646ca4debf5b14ca474"
   integrity sha512-ZVA9k326Nwrj3Cj9jlh3wGFutC2ZornPNARZwsNYqQYgN0EsV2d53w5RN/co65Ohn4sUAUtb1rSUAOD6XN9idA==
+
+activeadmin-chat@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/activeadmin-chat/-/activeadmin-chat-1.0.0.tgz#b35fb483d3ab19285ae9529a0fa1b1f939350f90"
+  integrity sha512-i+jfJFMJ/H+n0tGbA3cna32F3HNmnSWVhuT29DQYH85SqNq0HsqEMVSNzgn0lEsu+F5aU8ScTwOC4UOGq0phlg==
+  dependencies:
+    "@rails/actioncable" "^6.0.3-1"
 
 aggregate-error@^3.0.0:
   version "3.0.1"

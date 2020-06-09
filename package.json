@@ -1,9 +1,6 @@
 {
   "name": "activeadmin-chat",
   "version": "1.0.0",
-  "dependencies": {
-    "activeadmin-chat": "file:./javascript"
-  },
   "devDependencies": {
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0"
