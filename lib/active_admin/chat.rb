@@ -5,6 +5,7 @@ require 'active_admin/chat/extensions/application'
 require 'active_admin/chat/application'
 require 'active_admin/chat/extensions/index_table_for'
 require 'active_admin/chat/message_presenter'
+require 'webpacker'
 
 module ActiveAdmin
   module Chat
