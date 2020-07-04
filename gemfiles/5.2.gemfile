@@ -17,4 +17,5 @@ group :development, :test do
   gem 'selenium-webdriver', '~> 3.0'
   gem 'simplecov', '~> 0.17.1'
   gem 'sqlite3', '~> 1.3.0'
+  gem 'webpacker', '~> 5.0'
 end

@@ -1,6 +1,8 @@
 AllCops:
   Exclude:
     - spec/dummy/db/schema.rb
+    - spec/dummy/node_modules/**/*
+    - node_modules/**/*
     - vendor/bundle/**/*
     - gemfiles/vendor/bundle/**/*
 
