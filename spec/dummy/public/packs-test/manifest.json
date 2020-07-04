@@ -1,0 +1,24 @@
+{
+  "activeadmin-chat.js": "/packs-test/js/activeadmin-chat-d05c37a2525f0ebee219.js",
+  "activeadmin-chat.js.map": "/packs-test/js/activeadmin-chat-d05c37a2525f0ebee219.js.map",
+  "application.js": "/packs-test/js/application-4907031b66a47994a8ac.js",
+  "application.js.map": "/packs-test/js/application-4907031b66a47994a8ac.js.map",
+  "entrypoints": {
+    "activeadmin-chat": {
+      "js": [
+        "/packs-test/js/activeadmin-chat-d05c37a2525f0ebee219.js"
+      ],
+      "js.map": [
+        "/packs-test/js/activeadmin-chat-d05c37a2525f0ebee219.js.map"
+      ]
+    },
+    "application": {
+      "js": [
+        "/packs-test/js/application-4907031b66a47994a8ac.js"
+      ],
+      "js.map": [
+        "/packs-test/js/application-4907031b66a47994a8ac.js.map"
+      ]
+    }
+  }
+}

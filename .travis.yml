@@ -1,28 +1,48 @@
-env:
-  global:
-    - CC_TEST_REPORTER_ID=796169b8dd8f24e0dfbe4ce3f7c3c3f95f5ecc5475b95871f1797664f6b2b3e3
-
 language: ruby
-cache: bundler
-rvm:
-  - 2.2.2
-  - 2.3.8
-  - 2.4.5
-  - 2.5.3
-  - ruby-head
+
+dist: xenial
+
+os: linux
 
 addons:
   chrome: stable
 
-dist: xenial
-os: linux
+env:
+  global:
+    - CC_TEST_REPORTER_ID=796169b8dd8f24e0dfbe4ce3f7c3c3f95f5ecc5475b95871f1797664f6b2b3e3
+
+cache:
+  bundler: true
+  directories:
+    - node_modules
+  yarn: true
+
+rvm:
+  - 2.4.5
+  - 2.5.3
+  - ruby-head
+
+gemfile:
+  - gemfiles/5.2.gemfile
+
+jobs:
+  fast_finish: true
+  allow_failures:
+    - rvm: ruby-head
 
 before_install:
-  - bundle install
   - "export PATH=$PATH:/usr/lib/chromium-browser/"
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+
+install:
+  - bundle install
+  - nvm install node
+  - nvm install 10
+  - node -v
+  - npm i -g yarn
+  - yarn install
 
 before_script:
   - CHROME_MAIN_VERSION=`google-chrome-stable --version | sed -E 's/(^Google Chrome |\.[0-9]+ )//g'`
@@ -32,14 +52,3 @@ before_script:
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
-gemfile:
-  - gemfiles/5.2.gemfile
-
-jobs:
-  fast_finish: true
-  exclude:
-    - gemfile: gemfiles/5.2.gemfile
-      rvm: 2.2.2
-  allow_failures:
-    - rvm: ruby-head

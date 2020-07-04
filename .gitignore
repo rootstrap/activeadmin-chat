@@ -9,7 +9,6 @@ spec/dummy/yarn-error.log
 spec/dummy/storage/
 spec/dummy/tmp/
 spec/dummy/public/packs/
-spec/dummy/public/packs-test/
 spec/tmp/
 node_modules/
 /coverage/
