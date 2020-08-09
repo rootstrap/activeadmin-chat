@@ -1,12 +1,12 @@
 import { createClient } from '@unabridged/motion';
-import consumer from './channels/consumer';
+import { createConsumer } from "@rails/actioncable"
 
 export default createClient({
 
   // To avoid creating a second websocket, make sure to reuse the application's
   // ActionCable consumer. If you are not otherwise using ActionCable, you can
   // remove this line and the corresponding import.
-  consumer,
+  consumer: createConsumer(),
 
   // Motion can log information about the lifecycle of components to the
   // browser's console. It is recommended to turn this feature off outside of

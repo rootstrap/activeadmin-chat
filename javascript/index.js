@@ -1,5 +1,5 @@
 import createSubscription from './modules/createSubscription';
-import 'motion' from './modules/motion';
+import motion from './modules/motion';
 import reframeTime from './modules/reframeTime';
 import scrollConversationToBottom from './modules/scrollConversationToBottom';
 import setScrollListener from './modules/setScrollListener';

@@ -843,10 +843,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@rails/actioncable@^6.0.3-1":
-  version "6.0.3-2"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3-2.tgz#18933d870649e356f3c47a134af9430f17ce51ca"
-  integrity sha512-zgMwnvn0zmJuy1N7IgZpd4X1ERWBL/bd9ZrqaSKtWay7F4ZB+Q6F5dc1D2I3IyUYYQU5dssQb5VaygvMLc7+GA==
+"@rails/actioncable@>= 5.2", "@rails/actioncable@>= 6.0":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3.tgz#722b4b639936129307ddbab3a390f6bcacf3e7bc"
+  integrity sha512-I01hgqxxnOgOtJTGlq0ZsGJYiTEEiSGVEGQn3vimZSqEP1HqzyFNbzGTq14Xdyeow2yGJjygjoFF1pmtE+SQaw==
 
 "@rails/webpacker@5.1.1":
   version "5.1.1"
@@ -924,6 +924,14 @@
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
+
+"@unabridged/motion@>= 0.4.0":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@unabridged/motion/-/motion-0.4.1.tgz#3c227ee8a291cc453723832f19f7e6c4d0fcef74"
+  integrity sha512-pNiN1B9FtEa3oC6b8K9ojwUnnrK89ANUsAaF9iPme35Qf5yyy31ZxFEqKR1UqGR5RKoyZ6xzOvYalHLCL9tEgQ==
+  dependencies:
+    "@rails/actioncable" ">= 6.0"
+    morphdom "^2.6.1"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -1098,12 +1106,11 @@ acorn@^6.4.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.1.tgz#531e58ba3f51b9dacb9a6646ca4debf5b14ca474"
   integrity sha512-ZVA9k326Nwrj3Cj9jlh3wGFutC2ZornPNARZwsNYqQYgN0EsV2d53w5RN/co65Ohn4sUAUtb1rSUAOD6XN9idA==
 
-activeadmin-chat@1.0.0:
+"activeadmin-chat@file:../../javascript":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/activeadmin-chat/-/activeadmin-chat-1.0.0.tgz#b35fb483d3ab19285ae9529a0fa1b1f939350f90"
-  integrity sha512-i+jfJFMJ/H+n0tGbA3cna32F3HNmnSWVhuT29DQYH85SqNq0HsqEMVSNzgn0lEsu+F5aU8ScTwOC4UOGq0phlg==
   dependencies:
-    "@rails/actioncable" "^6.0.3-1"
+    "@rails/actioncable" ">= 5.2"
+    "@unabridged/motion" ">= 0.4.0"
 
 aggregate-error@^3.0.0:
   version "3.1.0"
@@ -4462,6 +4469,11 @@ mixin-deep@^1.2.0:
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
   dependencies:
     minimist "^1.2.5"
+
+morphdom@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/morphdom/-/morphdom-2.6.1.tgz#e868e24f989fa3183004b159aed643e628b4306e"
+  integrity sha512-Y8YRbAEP3eKykroIBWrjcfMw7mmwJfjhqdpSvoqinu8Y702nAwikpXcNFDiIkyvfCLxLM9Wu95RZqo4a9jFBaA==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
