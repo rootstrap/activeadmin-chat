@@ -1,5 +1,5 @@
 <div class='active-admin-chat__conversation-history-container'>
-  <div class='active-admin-chat__conversation-history'>
+  <div class='active-admin-chat__conversation-history' data-motion='scroll->load_messages'>
     <% if conversation && messages.empty? %>
         <div class='active-admin-chat__conversation-history no-messages'>No messages</div>
     <% else %>
@@ -7,7 +7,7 @@
     <% end %>
   </div>
   <div class='active-admin-chat__send-message-container'>
-    <form data-motion='submit->send_message'>
+    <form class='active-admin-chat__send-message-form' data-motion='send_message'>
       <input id='<%= send_message_id %>' type='text' name='message' placeholder='Send message' />
     </form>
   </div>
