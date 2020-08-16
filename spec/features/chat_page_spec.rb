@@ -37,8 +37,8 @@ feature 'Visit the chat page', js: true do
 
       expect(page).not_to have_content('A new message')
 
-      fill_in 'send-message', with: 'A new message'
-      find('#send-message').native.send_keys(:return)
+      fill_in 'message', with: 'A new message'
+      find('[name="message"]').native.send_keys(:return)
 
       expect(page).to have_content('A new message')
       expect(page).to have_content(Time.current.strftime(':%M - %m/%d/%Y'))
@@ -64,8 +64,8 @@ feature 'Visit the chat page', js: true do
 
       expect(page).not_to have_content('A new message')
 
-      fill_in 'send-message', with: 'A new message'
-      find('#send-message').native.send_keys(:return)
+      fill_in 'message', with: 'A new message'
+      find('[name="message"]').native.send_keys(:return)
 
       expect(page).to have_content('A new message')
       expect(page).to have_content(Time.current.strftime(':%M - %m/%d/%Y'))
