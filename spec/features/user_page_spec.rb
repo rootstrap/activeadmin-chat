@@ -14,8 +14,8 @@ feature 'Visit the users page', js: true do
       find('a', text: 'Send Message').click
     end
 
-    fill_in 'send-message', with: 'A new message'
-    find('#send-message').native.send_keys(:return)
+    fill_in 'message', with: 'A new message'
+    find('[name="message"]').native.send_keys(:return)
 
     visit admin_chat_path
 
@@ -36,8 +36,8 @@ feature 'Visit the users page', js: true do
     end
     expect(Conversation.find_by(person_id: person2.id)).not_to be_nil
 
-    fill_in 'send-message', with: 'A new message'
-    find('#send-message').native.send_keys(:return)
+    fill_in 'message', with: 'A new message'
+    find('[name="message"]').native.send_keys(:return)
 
     visit admin_chat_path
 
