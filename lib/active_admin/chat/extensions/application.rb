@@ -33,7 +33,8 @@ module ActiveAdmin
               end
 
               def active_conversation
-                @active_conversation ||= ActiveAdmin::Chat.conversation_klass.find_by(id: params[:id])
+                @active_conversation ||=
+                  ActiveAdmin::Chat.conversation_klass.find_by(id: params[:id])
               end
 
               def conversations
@@ -45,10 +46,10 @@ module ActiveAdmin
                 return [] unless active_conversation
 
                 active_conversation.public_send(ActiveAdmin::Chat.message_relation_name.pluralize)
-                  .includes(:sender)
-                  .order(created_at: :desc)
-                  .limit(ActiveAdmin::Chat.messages_per_page)
-                  .reverse
+                                   .includes(:sender)
+                                   .order(created_at: :desc)
+                                   .limit(ActiveAdmin::Chat.messages_per_page)
+                                   .reverse
               end
 
               private
