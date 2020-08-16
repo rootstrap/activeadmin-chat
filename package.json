@@ -9,5 +9,9 @@
   "dependencies": {
     "@rails/actioncable": ">= 5.2",
     "@unabridged/motion": ">= 0.4.0"
+  },
+  "devDependencies": {
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0"
   }
 }

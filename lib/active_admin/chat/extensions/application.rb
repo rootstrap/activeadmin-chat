@@ -24,17 +24,17 @@ module ActiveAdmin
               end
 
               def create
-                conversation =
-                  ActiveAdmin::Chat.conversation_klass
-                                   .find_or_create_by!(
-                                     "#{user_relation_name_id}": params[:"#{user_relation_name_id}"]
-                                   )
+                conversation = ActiveAdmin::Chat.conversation_klass.find_or_create_by!(
+                  "#{user_relation_name_id}": params[:"#{user_relation_name_id}"]
+                )
+
                 redirect_to action: 'show', id: conversation
               end
 
               def active_conversation
-                @active_conversation ||=
-                  ActiveAdmin::Chat.conversation_klass.find_by(id: params[:id])
+                @active_conversation ||= ActiveAdmin::Chat.conversation_klass.find_by(
+                  id: params[:id]
+                )
               end
 
               def conversations
