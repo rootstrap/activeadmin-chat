@@ -26,20 +26,20 @@ class ChatComponent < ViewComponent::Base
   end
 
   map_motion :load_messages
-  def load_messages(event)
+  def load_messages(_event)
     older_messages = conversation.public_send(ActiveAdmin::Chat.message_relation_name.pluralize)
-      .includes(:sender)
-      .where('created_at < ?', messages.first.created_at)
-      .order(created_at: :desc)
-      .limit(ActiveAdmin::Chat.messages_per_page)
-      .reverse
+                                 .includes(:sender)
+                                 .where('created_at < ?', messages.first.created_at)
+                                 .order(created_at: :desc)
+                                 .limit(ActiveAdmin::Chat.messages_per_page)
+                                 .reverse
 
     @messages = older_messages + @messages
   end
 
   def handle_received(message)
-    @messages << conversation.public_send(ActiveAdmin::Chat.message_relation_name.pluralize)
-      .includes(:sender)
-      .find(message['id'])
+    @messages << conversation.public_send(
+      ActiveAdmin::Chat.message_relation_name.pluralize
+    ).includes(:sender).find(message['id'])
   end
 end
