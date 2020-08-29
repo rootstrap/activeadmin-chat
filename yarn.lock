@@ -2,7 +2,20 @@
 # yarn lockfile v1
 
 
-"@rails/actioncable@^6.0.3-1":
-  version "6.0.3-2"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3-2.tgz#18933d870649e356f3c47a134af9430f17ce51ca"
-  integrity sha512-zgMwnvn0zmJuy1N7IgZpd4X1ERWBL/bd9ZrqaSKtWay7F4ZB+Q6F5dc1D2I3IyUYYQU5dssQb5VaygvMLc7+GA==
+"@rails/actioncable@>= 5.2", "@rails/actioncable@>= 6.0":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3.tgz#722b4b639936129307ddbab3a390f6bcacf3e7bc"
+  integrity sha512-I01hgqxxnOgOtJTGlq0ZsGJYiTEEiSGVEGQn3vimZSqEP1HqzyFNbzGTq14Xdyeow2yGJjygjoFF1pmtE+SQaw==
+
+"@unabridged/motion@>= 0.4.0":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@unabridged/motion/-/motion-0.4.1.tgz#3c227ee8a291cc453723832f19f7e6c4d0fcef74"
+  integrity sha512-pNiN1B9FtEa3oC6b8K9ojwUnnrK89ANUsAaF9iPme35Qf5yyy31ZxFEqKR1UqGR5RKoyZ6xzOvYalHLCL9tEgQ==
+  dependencies:
+    "@rails/actioncable" ">= 6.0"
+    morphdom "^2.6.1"
+
+morphdom@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/morphdom/-/morphdom-2.6.1.tgz#e868e24f989fa3183004b159aed643e628b4306e"
+  integrity sha512-Y8YRbAEP3eKykroIBWrjcfMw7mmwJfjhqdpSvoqinu8Y702nAwikpXcNFDiIkyvfCLxLM9Wu95RZqo4a9jFBaA==

@@ -19,7 +19,9 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.3.0'
 
   s.add_dependency 'activeadmin', '>= 2.0'
+  s.add_dependency 'motion', '>= 0.4'
   s.add_dependency 'rails', '>= 5.2'
+  s.add_dependency 'view_component', '>= 2.0'
   s.add_dependency 'webpacker', '>= 5.0'
 
   s.add_development_dependency 'action-cable-testing', '>= 0.4.0'
