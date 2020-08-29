@@ -7,7 +7,8 @@
   "author": "Santiago Bartesaghi",
   "license": "MIT",
   "dependencies": {
-    "@rails/actioncable": ">= 6.0"
+    "@rails/actioncable": ">= 6.0",
+    "@unabridged/motion": ">= 0.4.0"
   },
   "devDependencies": {
     "stylelint": "^13.3.3",

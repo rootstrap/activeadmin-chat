@@ -237,6 +237,14 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
   integrity sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
 
+"@unabridged/motion@>= 0.4.0":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@unabridged/motion/-/motion-0.4.3.tgz#81070ca10a4912cc623b6e837e4bfba0e022ac3c"
+  integrity sha512-K1vMrqA/i4tG6NKmjy8npSm/dKxghgn0ViRDnbpOdK5SnKxt4TbttwR3sm8GPRLq8MosFgQN+rM8zBkDXuhbwg==
+  dependencies:
+    "@rails/actioncable" ">= 6.0"
+    morphdom "^2.6.1"
+
 ajv@^6.12.4:
   version "6.12.5"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.5.tgz#19b0e8bae8f476e5ba666300387775fb1a00a4da"
@@ -1067,6 +1075,11 @@ mkdirp@^0.5.1:
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
   dependencies:
     minimist "^1.2.5"
+
+morphdom@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/morphdom/-/morphdom-2.6.1.tgz#e868e24f989fa3183004b159aed643e628b4306e"
+  integrity sha512-Y8YRbAEP3eKykroIBWrjcfMw7mmwJfjhqdpSvoqinu8Y702nAwikpXcNFDiIkyvfCLxLM9Wu95RZqo4a9jFBaA==
 
 ms@2.1.2:
   version "2.1.2"
