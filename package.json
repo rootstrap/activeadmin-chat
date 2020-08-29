@@ -1,8 +1,12 @@
 {
   "name": "activeadmin-chat",
   "version": "1.0.0",
-  "devDependencies": {
-    "stylelint": "^13.3.3",
-    "stylelint-config-standard": "^20.0.0"
+  "description": "Get a chat for your ActiveAdmin app out of the box.",
+  "main": "javascript/index.js",
+  "repository": "https://github.com/rootstrap/activeadmin-chat",
+  "author": "Santiago Bartesaghi",
+  "license": "MIT",
+  "dependencies": {
+    "@rails/actioncable": "^6.0.3-1"
   }
 }
