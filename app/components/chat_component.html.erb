@@ -1,7 +1,7 @@
 <div class='active-admin-chat__conversation-history-container'>
   <div class='active-admin-chat__conversation-history' data-motion='scroll->load_messages'>
     <% if conversation && messages.empty? %>
-        <div class='active-admin-chat__conversation-history no-messages'>No messages</div>
+      <div class='active-admin-chat__conversation-history no-messages'>No messages</div>
     <% else %>
       <%= render partial: 'active_admin/chat/messages', locals: { messages: messages } %>
     <% end %>
