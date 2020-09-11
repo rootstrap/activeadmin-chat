@@ -6,6 +6,7 @@ module ActiveAdminChat
       class_option :message_model_name, type: :string, default: 'message'
       class_option :admin_user_model_name, type: :string, default: 'admin_user'
       class_option :user_model_name, type: :string, default: 'user'
+      class_option :multi_chat, type: :boolean, default: false
 
       source_root File.expand_path('templates', __dir__)
 
@@ -15,6 +16,7 @@ module ActiveAdminChat
         @admin_user_model_name = options['admin_user_model_name'].underscore.singularize
         @user_model_name = options['user_model_name'].underscore.singularize
         @messages_per_page = 25
+        @multi_chat = options[:multi_chat]
       end
 
       def copy_initializer
@@ -22,27 +24,31 @@ module ActiveAdminChat
       end
 
       def create_models
-        unless model_exists?(@conversation_model_name)
-          Rails::Generators.invoke('active_record:model', [
-                                     @conversation_model_name,
-                                     "#{@user_model_name.split('/').last}_id:integer:index",
-                                     '--migration',
-                                     '--timestamps'
-                                   ])
-        end
+        generate_conversation_model unless model_exists?(@conversation_model_name)
 
-        unless model_exists?(@message_model_name)
-          Rails::Generators.invoke('active_record:model', [
-                                     @message_model_name,
-                                     'content:string',
-                                     'sender:references{polymorphic}',
-                                     "#{@conversation_model_name.split('/').last}_id:integer:index",
-                                     'created_at:datetime:index',
-                                     'updated_at:datetime',
-                                     '--migration',
-                                     '--no-timestamps'
-                                   ])
-        end
+        generate_message_model unless model_exists?(@message_model_name)
+      end
+
+      def generate_conversation_model
+        list = [@conversation_model_name,
+                "#{@user_model_name.split('/').last}_id:integer:index",
+                '--migration',
+                '--timestamps']
+        list.insert(2, "#{@admin_user_model_name.split('/').last}_id:integer:index") if @multi_chat
+        Rails::Generators.invoke('active_record:model', list)
+      end
+
+      def generate_message_model
+        Rails::Generators.invoke('active_record:model', [
+                                   @message_model_name,
+                                   'content:string',
+                                   'sender:references{polymorphic}',
+                                   "#{@conversation_model_name.split('/').last}_id:integer:index",
+                                   'created_at:datetime:index',
+                                   'updated_at:datetime',
+                                   '--migration',
+                                   '--no-timestamps'
+                                 ])
       end
 
       def inject_models_contents
@@ -70,8 +76,10 @@ module ActiveAdminChat
       private
 
       def conversation_contents
+        admin_belongs = add_belongs_to(@admin_user_model_name) if @multi_chat
         buffer = <<-CONTENT
   #{add_belongs_to(@user_model_name)}
+  #{admin_belongs}
   #{add_has_many(@message_model_name)}
         CONTENT
 
@@ -81,6 +89,14 @@ module ActiveAdminChat
       def message_contents
         buffer = <<-CONTENT
   #{add_belongs_to(@conversation_model_name)}
+        CONTENT
+
+        buffer
+      end
+
+      def admin_user_contents
+        buffer = <<-CONTENT
+  #{add_has_many(@conversation_model_name)}
         CONTENT
 
         buffer

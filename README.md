@@ -40,6 +40,13 @@ For example:
 $ rails generate active_admin_chat:install --conversation_model_name=chat
 ```
 
+By default this installation will only have one chat per user. If there is a need of having one chat per admin and user you can add `--multi-chat`
+
+For example:
+```bash
+$ rails generate active_admin_chat:install --conversation_model_name=chat --multi-chat
+```
+
 Once you've successfully installed ActiveAdminChat, run:
 ```bash
 $ rails db:migrate

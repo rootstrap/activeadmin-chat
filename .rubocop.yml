@@ -3,6 +3,7 @@ AllCops:
     - spec/dummy/db/schema.rb
     - vendor/bundle/**/*
     - gemfiles/vendor/bundle/**/*
+    - spec/tmp/**/*
 
 Documentation:
   Enabled: false
@@ -29,6 +30,7 @@ Metrics/BlockLength:
   Max: 25
   Exclude:
     - spec/generators/install_generator_spec.rb
+    - spec/generators/install_generator_multi_spec.rb
     - lib/active_admin_chat/active_admin/application.rb
     - active_admin_chat.gemspec
   ExcludedMethods: ['describe', 'context', 'feature', 'scenario']
