@@ -1,7 +1,6 @@
-$LOAD_PATH.push File.expand_path('lib', __dir__)
+# frozen_string_literal: true
 
-# Maintain your gem's version:
-require 'active_admin/chat/version'
+require_relative 'lib/active_admin/chat/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
@@ -15,6 +14,7 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+  s.require_paths = ['lib']
 
   s.required_ruby_version = '>= 2.3.0'
 
