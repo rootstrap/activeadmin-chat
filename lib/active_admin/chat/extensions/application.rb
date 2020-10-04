@@ -46,10 +46,9 @@ module ActiveAdmin
               def messages
                 return [] unless active_conversation
 
-                page_messages = active_conversation.public_send(ActiveAdmin::Chat
-                  .message_relation_name
-                  .pluralize)
-                                                   .includes(:sender).order(created_at: :desc)
+                page_messages = active_conversation.public_send(
+                  ActiveAdmin::Chat.message_relation_name.pluralize
+                ).includes(:sender).order(created_at: :desc)
 
                 if params[:created_at].present?
                   page_messages = page_messages.where('created_at < ?',
