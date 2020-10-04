@@ -1098,10 +1098,8 @@ acorn@^6.4.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.1.tgz#531e58ba3f51b9dacb9a6646ca4debf5b14ca474"
   integrity sha512-ZVA9k326Nwrj3Cj9jlh3wGFutC2ZornPNARZwsNYqQYgN0EsV2d53w5RN/co65Ohn4sUAUtb1rSUAOD6XN9idA==
 
-activeadmin-chat@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/activeadmin-chat/-/activeadmin-chat-1.0.0.tgz#b35fb483d3ab19285ae9529a0fa1b1f939350f90"
-  integrity sha512-i+jfJFMJ/H+n0tGbA3cna32F3HNmnSWVhuT29DQYH85SqNq0HsqEMVSNzgn0lEsu+F5aU8ScTwOC4UOGq0phlg==
+"activeadmin-chat@file:../..":
+  version "1.0.1"
   dependencies:
     "@rails/actioncable" "^6.0.3-1"
 
