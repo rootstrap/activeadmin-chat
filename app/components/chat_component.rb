@@ -8,7 +8,8 @@ class ChatComponent < ViewComponent::Base
     @conversation = conversation
     @messages = messages
     @send_message_id = SecureRandom.uuid
-    self.class.stream_for(conversation, :handle_received)
+
+    stream_for(conversation, :handle_received)
   end
 
   map_motion :send_message
