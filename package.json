@@ -1,6 +1,6 @@
 {
   "name": "activeadmin-chat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get a chat for your ActiveAdmin app out of the box.",
   "main": "javascript/index.js",
   "repository": "https://github.com/rootstrap/activeadmin-chat",
