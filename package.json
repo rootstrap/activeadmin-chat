@@ -8,5 +8,9 @@
   "license": "MIT",
   "dependencies": {
     "@rails/actioncable": "^6.0.3-1"
+  },
+  "devDependencies": {
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0"
   }
 }
