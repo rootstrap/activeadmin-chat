@@ -1,43 +1,48 @@
-env:
-  global:
-    - CC_TEST_REPORTER_ID=796169b8dd8f24e0dfbe4ce3f7c3c3f95f5ecc5475b95871f1797664f6b2b3e3
-
 language: ruby
-cache: bundler
-rvm:
-  - 2.2.2
-  - 2.3.8
-  - 2.4.5
-  - 2.5.3
-  - ruby-head
+
+dist: xenial
+
+os: linux
 
 addons:
   chrome: stable
 
-dist: xenial
-os: linux
+env:
+  global:
+    - CC_TEST_REPORTER_ID=796169b8dd8f24e0dfbe4ce3f7c3c3f95f5ecc5475b95871f1797664f6b2b3e3
 
-before_install:
-  - bundle install
-  - sudo apt-get update
-  - sudo apt-get install chromium-chromedriver
-  - "export PATH=$PATH:/usr/lib/chromium-browser/"
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+cache:
+  - bundler
+  - yarn
 
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+rvm:
+  - 2.5.8
+  - 2.6.6
+  - 2.7.1
+  - ruby-head
 
 gemfile:
-  - gemfiles/5.0.gemfile
-  - gemfiles/5.1.gemfile
-  - gemfiles/5.2.gemfile
+  - gemfiles/rails_5_2.gemfile
+  - gemfiles/rails_6_0.gemfile
 
 jobs:
   fast_finish: true
-  exclude:
-    - gemfile: gemfiles/5.2.gemfile
-      rvm: 2.2.2
   allow_failures:
     - rvm: ruby-head
+
+before_install:
+  - nvm install 12
+  - bin/yarn install
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - CHROME_MAIN_VERSION=`google-chrome-stable --version | sed -E 's/(^Google Chrome |\.[0-9]+ )//g'`
+  - CHROMEDRIVER_VERSION=`curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAIN_VERSION"`
+  - curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -O
+  - unzip chromedriver_linux64.zip -d ~/bin
+  - gem update --system --no-doc
+  - gem install bundler --no-doc
+
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

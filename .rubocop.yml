@@ -1,6 +1,9 @@
 AllCops:
+  TargetRubyVersion: 2.5
   Exclude:
     - spec/dummy/db/schema.rb
+    - spec/dummy/node_modules/**/*
+    - node_modules/**/*
     - vendor/bundle/**/*
     - gemfiles/vendor/bundle/**/*
 
@@ -13,24 +16,24 @@ Lint/AmbiguousBlockAssociation:
 
 Lint/NestedMethodDefinition:
   Exclude:
-    - lib/active_admin_chat/active_admin/application.rb
+    - lib/active_admin/chat/extensions/application.rb
 
 Metrics/AbcSize:
   # The ABC size is a calculated magnitude, so this number can be an Integer or
   # a Float.
   Max: 15
   Exclude:
-    - lib/generators/active_admin_chat/install/install_generator.rb
-    - lib/active_admin_chat/active_admin/application.rb
-    - app/channels/chat_channel.rb
+    - lib/generators/active_admin/chat/install/install_generator.rb
+    - lib/active_admin/chat/extensions/application.rb
+    - app/channels/active_admin/chat/chat_channel.rb
 
 Metrics/BlockLength:
   CountComments: false  # count full line comments?
   Max: 25
   Exclude:
     - spec/generators/install_generator_spec.rb
-    - lib/active_admin_chat/active_admin/application.rb
-    - active_admin_chat.gemspec
+    - lib/active_admin/chat/extensions/application.rb
+    - activeadmin-chat.gemspec
   ExcludedMethods: ['describe', 'context', 'feature', 'scenario']
 
 Metrics/BlockNesting:
@@ -48,7 +51,7 @@ Metrics/MethodLength:
   CountComments: false  # count full line comments?
   Max: 24
   Exclude:
-    - lib/active_admin_chat/active_admin/application.rb
+    - lib/active_admin/chat/extensions/application.rb
 
 Metrics/ModuleLength:
   CountComments: false  # count full line comments?
@@ -64,7 +67,7 @@ Metrics/LineLength:
     - https
   Exclude:
     - spec/dummy/**/*
-    - spec/channels/chat_channel_spec.rb
+    - spec/channels/active_admin/chat/chat_channel_spec.rb
     - config/routes.rb
 
 Metrics/ParameterLists:
@@ -73,6 +76,10 @@ Metrics/ParameterLists:
 
 Metrics/PerceivedComplexity:
   Max: 12
+
+Naming/FileName:
+  Exclude:
+    - lib/activeadmin-chat.rb
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -86,4 +93,4 @@ Style/MixinUsage:
 
 Style/GuardClause:
   Exclude:
-    - lib/generators/active_admin_chat/install/install_generator.rb
+    - lib/generators/active_admin/chat/install/install_generator.rb

@@ -7,9 +7,9 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'action_cable/testing/rspec'
-require 'database_cleaner'
 require 'selenium/webdriver'
 require 'simplecov'
+require 'factory_bot_rails'
 
 SimpleCov.start
 
@@ -55,13 +55,13 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.include ActiveSupport::Testing::TimeHelpers
+  config.include FactoryBot::Syntax::Methods
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -82,4 +82,59 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.before(:each, type: :feature) do
+    # Ensure that the client JavaScript within the app is synced with the gem
+    DummyAppHelpers.link_client!
+  end
+
+  # To avoid running every test twice on subsequent runs because of the
+  # recursive symlink, make sure to unlink the client.
+  config.after(:suite) do
+    DummyAppHelpers.unlink_client!
+  end
+
+  FactoryBot.definition_file_paths << File.expand_path('dummy/factories', __dir__)
+  config.before do
+    FactoryBot.reload
+  end
+end
+
+class DummyAppHelpers
+  class << self
+    def link_client!
+      return if @linked
+
+      yarn! '--cwd', '../../..', 'link'
+      yarn! 'link', 'activeadmin-chat'
+      yarn! 'install'
+
+      clear_webpacker_cache!
+
+      @linked = true
+    end
+
+    def unlink_client!
+      return unless @linked
+
+      yarn! 'unlink', 'activeadmin-chat'
+    end
+
+    private
+
+    def clear_webpacker_cache!
+      webpacker_cache_path = File.expand_path('tmp/cache', Rails.root)
+      FileUtils.rm_r(webpacker_cache_path) if File.exist?(webpacker_cache_path)
+    end
+
+    def yarn!(*args)
+      stdout, stderr, status =
+        Open3.capture3('bin/yarn', *args, chdir: Rails.root)
+
+      return if status.success?
+
+      short_output = [stdout, stderr].delete_if(&:empty?).join("\n\n")
+      raise "Failed to `yarn #{args.join(' ')}`! Yarn says:\n#{short_output}"
+    end
+  end
 end

@@ -1,9 +1,4 @@
 require 'rails_helper'
-require 'timecop'
-require 'factories/admin_user'
-require 'factories/conversation'
-require 'factories/person'
-require 'factories/text'
 
 feature 'Visit the chat page', js: true do
   given!(:admin) { create(:admin_user) }
@@ -35,7 +30,7 @@ feature 'Visit the chat page', js: true do
   end
 
   scenario 'sends a message' do
-    Timecop.freeze(Time.current) do
+    freeze_time do
       visit admin_chat_path
 
       find('.active-admin-chat__conversation-item', text: person1.email).click
@@ -46,8 +41,7 @@ feature 'Visit the chat page', js: true do
       find('#send-message').native.send_keys(:return)
 
       expect(page).to have_content('A new message')
-      expect(page).to have_content(Time.current.strftime(':%M - %m/%d/%Y')
-                                       .sub(%r{(0)?(\d)\/0(\d)}, '\2/\3'))
+      expect(page).to have_content(Time.current.strftime(':%M - %m/%d/%Y'))
 
       visit admin_chat_path
 
@@ -61,7 +55,7 @@ feature 'Visit the chat page', js: true do
   end
 
   scenario "sends a message and 'No messages' disappear" do
-    Timecop.freeze(Time.current) do
+    freeze_time do
       visit admin_chat_path
 
       find('.active-admin-chat__conversation-item', text: person3.email).click
@@ -74,8 +68,7 @@ feature 'Visit the chat page', js: true do
       find('#send-message').native.send_keys(:return)
 
       expect(page).to have_content('A new message')
-      expect(page).to have_content(Time.current.strftime(':%M - %m/%d/%Y')
-                                       .sub(%r{(0)?(\d)\/0(\d)}, '\2/\3'))
+      expect(page).to have_content(Time.current.strftime(':%M - %m/%d/%Y'))
 
       visit admin_chat_path
 

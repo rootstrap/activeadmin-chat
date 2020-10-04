@@ -1,5 +1,11 @@
 {
   "name": "dummy",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "5.1.1",
+    "activeadmin-chat": "file:../.."
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
+  }
 }
