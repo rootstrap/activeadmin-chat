@@ -16,7 +16,6 @@ cache:
   - yarn
 
 rvm:
-  - 2.4.10
   - 2.5.8
   - 2.6.6
   - 2.7.1
@@ -30,9 +29,6 @@ jobs:
   fast_finish: true
   allow_failures:
     - rvm: ruby-head
-  exclude:
-    - rvm: 2.4.10
-      gemfile: gemfiles/rails_6_0.gemfile
 
 before_install:
   - nvm install 12
