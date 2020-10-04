@@ -77,6 +77,10 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Max: 12
 
+Naming/FileName:
+  Exclude:
+    - lib/activeadmin-chat.rb
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
