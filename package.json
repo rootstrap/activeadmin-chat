@@ -3,6 +3,13 @@
   "version": "1.0.1",
   "description": "Get a chat for your ActiveAdmin app out of the box.",
   "main": "javascript/index.js",
+  "files": [
+    "package.json",
+    "javascript/**/*"
+  ],
+  "directories": {
+    "lib": "javascript"
+  },
   "repository": "https://github.com/rootstrap/activeadmin-chat",
   "author": "Santiago Bartesaghi",
   "license": "MIT",
@@ -12,5 +19,8 @@
   "devDependencies": {
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
