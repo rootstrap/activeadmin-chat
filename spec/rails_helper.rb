@@ -106,7 +106,7 @@ class DummyAppHelpers
       return if @linked
 
       yarn! '--cwd', '../../..', 'link'
-      yarn! 'link', 'activeadmin-chat'
+      yarn! 'link', '@rootstrap/activeadmin-chat'
       yarn! 'install'
 
       clear_webpacker_cache!
@@ -117,7 +117,7 @@ class DummyAppHelpers
     def unlink_client!
       return unless @linked
 
-      yarn! 'unlink', 'activeadmin-chat'
+      yarn! 'unlink', '@rootstrap/activeadmin-chat'
     end
 
     private

@@ -1,1 +1,1 @@
-import 'activeadmin-chat';
+import '@rootstrap/activeadmin-chat';
