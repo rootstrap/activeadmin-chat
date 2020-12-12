@@ -55,9 +55,9 @@ Once you've successfully installed `ActiveAdmin::Chat`, run:
 $ rails db:migrate
 ```
 
-Add including of CSS to `app/assets/stylesheets/active_admin.css.scss`:
+Add including of CSS to `config/initializers/assets.rb`:
 ```css
-@import 'active_admin/chat';
+Rails.application.config.assets.precompile += %w[active_admin/chat.css]
 ```
 
 Create a file named `app/javascript/packs/activeadmin-chat.js`, with the following content:
